@@ -41,6 +41,8 @@ def load_dotenv(path):
 async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", choices=["fixture", "live"], default="fixture")
+    ap.add_argument("--provider", choices=["kimi", "openai"], default="kimi",
+                    help="live LLM: kimi (Moonshot, sponsor) or openai (cheap dev)")
     ap.add_argument("--mini", type=int, default=0, help="only the first N agents; does not write")
     ap.add_argument("--src", default=os.path.join(ROOT, "golden", "golden_run.json"))
     ap.add_argument("--out", default=os.path.join(ROOT, "golden", "golden_run.json"))
@@ -52,7 +54,7 @@ async def main():
     if args.mini:
         agents = agents[: args.mini]
     scenario, creative = golden["scenario"], golden["creative_manifest"]
-    print(f"baking mode={args.mode} agents={len(agents)} brand={scenario['brand']}")
+    print(f"baking mode={args.mode} provider={args.provider} agents={len(agents)} brand={scenario['brand']}")
 
     # 1) per-agent grounding (each agent runs its own query). Falls back to baked
     #    grounding if live Bright Data is unavailable (e.g. zones not created yet).
@@ -66,8 +68,8 @@ async def main():
                 print(f"  grounding: live unavailable ({type(e).__name__}); using baked grounding")
                 ground_warned = True
 
-    # 2) Kimi panel (fan-out, shared cached prefix + per-agent block)
-    reactions = await kimi.run_panel(agents, scenario, creative, mode=args.mode)
+    # 2) panel (fan-out, shared cached prefix + per-agent block)
+    reactions = await kimi.run_panel(agents, scenario, creative, mode=args.mode, provider=args.provider)
 
     # 3) reduce -> aggregate
     aggregate, grounding_index = reduce_aggregate(reactions, creative)
