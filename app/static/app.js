@@ -115,9 +115,12 @@ function renderBlast(d) {
   chip.textContent = a.decision;
   chip.className = "decision-chip " + a.decision.toLowerCase();
   // animate after a beat so the panel begins igniting first
+  const num = $("blast-num");
+  num.classList.remove("settled");
   setTimeout(() => {
-    countUp($("blast-num"), a.blast_score);
+    countUp(num, a.blast_score, 1400);
     $("heat-fill").style.width = a.blast_score + "%";
+    setTimeout(() => num.classList.add("settled"), 1400);
   }, 520);
 }
 
@@ -139,6 +142,79 @@ function renderFutureHeadline(d) {
     el("span", { class: "kicker" }, "Tomorrow's headline if you launch as-is"),
     document.createTextNode(d.headline.title),
   );
+}
+
+// Diverging sentiment spectrum: how the room actually feels, not just the % severe.
+const SENT_BUCKETS = [
+  { v: -2, label: "hostile", color: "#A6201A" },
+  { v: -1, label: "wary", color: "#C2622C" },
+  { v: 0, label: "neutral", color: "#9DB0A9" },
+  { v: 1, label: "warm", color: "#2E6B4F" },
+];
+function renderSentiment(d) {
+  const wrap = $("sentiment");
+  if (!wrap) return;
+  const resp = d.reactions.filter((r) => (r.status || "responded") === "responded");
+  const n = resp.length || 1;
+  const counts = SENT_BUCKETS.map((b) => resp.filter((r) => (r.sentiment ?? 0) === b.v).length);
+  const mean = resp.reduce((s, r) => s + (r.sentiment ?? 0), 0) / n;
+  const meanPct = ((mean + 2) / 3) * 100; // map -2..1 onto 0..100
+  wrap.replaceChildren(
+    el("div", { class: "sent-head" },
+      el("span", {}, "Room sentiment"),
+      el("span", { class: "sent-mean" }, `mean ${mean.toFixed(2)} · ${mean < -0.5 ? "hostile" : mean < 0 ? "wary" : "mixed"}`)),
+    el("div", { class: "sent-bar" },
+      ...SENT_BUCKETS.map((b, i) => {
+        const pct = (counts[i] / n) * 100;
+        const seg = el("span", { class: "sent-seg", style: `background:${b.color};width:0`, title: `${b.label}: ${counts[i]}` });
+        requestAnimationFrame(() => { seg.style.width = pct + "%"; });
+        return seg;
+      }),
+      el("span", { class: "sent-marker", style: `left:0`, title: `mean ${mean.toFixed(2)}` })),
+    el("div", { class: "sent-legend" },
+      ...SENT_BUCKETS.map((b, i) => el("span", { class: "sent-lg" },
+        el("i", { style: `background:${b.color}` }), `${b.label} ${counts[i]}`))),
+  );
+  const marker = wrap.querySelector(".sent-marker");
+  if (marker) requestAnimationFrame(() => { marker.style.left = meanPct + "%"; });
+}
+
+// Severity histogram + "would go public" channel mix under the panel grid.
+const SEV_LABEL = ["calm", "mild", "serious", "go public"];
+function renderPanelStats(d) {
+  const wrap = $("panel-stats");
+  if (!wrap) return;
+  const resp = d.reactions.filter((r) => (r.status || "responded") === "responded");
+  const n = resp.length || 1;
+  const sev = [0, 1, 2, 3].map((s) => resp.filter((r) => r.severity === s).length);
+  const maxSev = Math.max(...sev, 1);
+  const wouldShare = resp.filter((r) => r.would_share && r.would_share.yes).length;
+  wrap.replaceChildren(
+    el("div", { class: "ps-hist" },
+      ...sev.map((c, s) => {
+        const col = el("div", { class: "ps-col" },
+          el("div", { class: "ps-n" }, c),
+          el("div", { class: "ps-bar-wrap" },
+            el("div", { class: "ps-bar", style: `background:${heatSeverity(s)};height:0` })),
+          el("div", { class: "ps-lab" }, SEV_LABEL[s]));
+        const b = col.querySelector(".ps-bar");
+        requestAnimationFrame(() => { b.style.height = (c / maxSev * 100) + "%"; });
+        return col;
+      })),
+    el("div", { class: "ps-broadcast" },
+      el("b", {}, `${Math.round(100 * wouldShare / n)}%`),
+      ` would take it public · ${wouldShare} of ${n} responders ready to post`),
+  );
+}
+
+// Orchestrated reveal: forensics sections rise as they enter the viewport.
+function setupReveal() {
+  const els = document.querySelectorAll("#dashboard-view .reveal");
+  if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach((e) => { e.classList.remove("in"); io.observe(e); });
 }
 
 function renderPanel(d) {
@@ -176,7 +252,9 @@ function renderClusters(d) {
       el("div", { class: "cluster-head" },
         el("span", { class: "cluster-cat" }, c.label,
           el("span", { class: "evi " + (c.evidence ? "has" : "spec") }, c.evidence ? "cited" : "speculation")),
-        el("span", { class: "cluster-pct" }, c.pct + "%")),
+        el("span", { class: "cluster-nums" },
+          el("span", { class: "cluster-count" }, `${c.count} agents`),
+          el("span", { class: "cluster-pct" }, c.pct + "%"))),
       el("div", { class: "cluster-bar" }, bar),
       el("div", { class: "cluster-quote" }, `“${c.pull_quote}”`),
     ));
@@ -469,9 +547,11 @@ function renderDashboard(d) {
   document.title = `60's Pulse — ${d.scenario.brand}`;
   renderMasthead(d);
   renderBlast(d);
+  renderSentiment(d);
   renderCreative(d);
   renderFutureHeadline(d);
   renderPanel(d);
+  renderPanelStats(d);
   renderClusters(d);
   renderTimeline(d);
   renderStakeholders(d);
@@ -481,6 +561,7 @@ function renderDashboard(d) {
     el("span", {}, "60's Pulse · Agent Forge AI Hackathon 2026"),
     el("span", {}, "All reactions are synthetic. Fictional masthead. Not a prediction."),
   );
+  setupReveal();
 }
 
 // ---- boot ------------------------------------------------------------------
