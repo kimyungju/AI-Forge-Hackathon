@@ -1,0 +1,20 @@
+# python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# env / secrets
+.env
+.env.local
+
+# node (if a frontend build is added later)
+node_modules/
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# baked media that is large (keep golden_run.json; ignore heavy raw frames if any)
+# app/static/frames/*.png

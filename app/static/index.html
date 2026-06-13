@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premortem — MerlionTel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=UnifrakturCook:wght@700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div id="app" class="loading">
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <div class="nameplate">
+        <span class="wordmark">PREMORTEM</span>
+        <span class="rule-v"></span>
+        <span class="outlet" id="outlet">THE STRAITS STANDARD</span>
+        <span class="sim-tag">SIMULATED</span>
+      </div>
+      <div class="masthead-meta" id="masthead-meta"></div>
+      <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+    </header>
+
+    <!-- ABOVE THE FOLD -->
+    <section class="fold-top">
+      <div class="verdict">
+        <div class="verdict-label">Blast Score</div>
+        <div class="blast">
+          <span class="blast-num" id="blast-num">0</span>
+          <span class="blast-band" id="blast-band"></span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill" id="heat-fill"></div></div>
+        <div class="verdict-sub">% of the panel that would go public against you</div>
+        <div class="chips">
+          <span class="decision-chip" id="decision-chip">&middot;</span>
+          <span class="panel-count" id="panel-count"></span>
+        </div>
+      </div>
+
+      <figure class="creative" id="creative"></figure>
+
+      <div class="future-headline" id="future-headline"></div>
+    </section>
+
+    <div class="fold-rule"><span>Below the fold &middot; The forensics</span></div>
+
+    <!-- BELOW THE FOLD -->
+    <section class="fold-bottom">
+      <section class="col panel-col">
+        <h2 class="col-title">The Kopitiam Panel <em id="panel-sub"></em></h2>
+        <div class="panel-grid" id="panel-grid"></div>
+        <div class="panel-legend" id="panel-legend"></div>
+      </section>
+
+      <section class="col clusters-col">
+        <h2 class="col-title">Top objections</h2>
+        <div class="clusters" id="clusters"></div>
+      </section>
+
+      <section class="col timeline-col">
+        <h2 class="col-title">Blast map <em>across the 0:30 film</em></h2>
+        <div class="timeline" id="timeline"></div>
+        <div class="timeline-readout" id="timeline-readout"></div>
+      </section>
+    </section>
+
+    <!-- STAKEHOLDERS -->
+    <section class="stakeholders-wrap">
+      <h2 class="col-title">Stakeholder verdicts</h2>
+      <div class="stakeholders" id="stakeholders"></div>
+    </section>
+
+    <!-- FIX -->
+    <section class="fix">
+      <h2 class="col-title">The fix <em>what each tier can and cannot move</em></h2>
+      <div class="fix-steps" id="fix-steps"></div>
+      <div class="fix-cards" id="fix-cards"></div>
+    </section>
+
+    <!-- HEADLINE ARTIFACT -->
+    <section class="headline-artifact">
+      <div class="artifact-head">
+        <h2 class="col-title">Tomorrow's Headline</h2>
+        <button class="toggle" id="page-toggle">Show page 12 &rarr;</button>
+      </div>
+      <article class="frontpage" id="frontpage"></article>
+    </section>
+
+    <footer class="foot" id="foot"></footer>
+  </div>
+
+  <!-- quote card popover -->
+  <div class="quote-card hidden" id="quote-card" role="dialog" aria-modal="true">
+    <button class="qc-close" id="qc-close" aria-label="Close">&times;</button>
+    <div class="qc-body" id="qc-body"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

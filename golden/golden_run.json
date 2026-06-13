@@ -1,0 +1,2218 @@
+{
+  "run_id": "gr_merliontel_v1",
+  "mode": "fixture",
+  "scenario": {
+    "brand": "MerlionTel",
+    "category": "Telecom",
+    "campaign": "\"We're Listening\" launch film: an AI that listens to your calls to personalise ads",
+    "date": "2026-06-13"
+  },
+  "creative_manifest": [
+    {
+      "scene_id": "s00",
+      "t_start": 0,
+      "t_end": 4,
+      "keyframe": "frames/s00.jpg",
+      "visual_desc": "MerlionTel logo over a warm sunrise on HDB blocks",
+      "transcript": "MerlionTel. We hear you.",
+      "on_screen_text": "WE HEAR YOU"
+    },
+    {
+      "scene_id": "s04",
+      "t_start": 4,
+      "t_end": 8,
+      "keyframe": "frames/s04.jpg",
+      "visual_desc": "A woman on a phone call in her kitchen",
+      "transcript": "Our new AI listens to your calls to understand what you really want.",
+      "on_screen_text": ""
+    },
+    {
+      "scene_id": "s08",
+      "t_start": 8,
+      "t_end": 12,
+      "keyframe": "frames/s08.jpg",
+      "visual_desc": "A phone screen surfaces an ad mid-conversation",
+      "transcript": "So the ads you see are made just for you.",
+      "on_screen_text": "ADS MADE FOR YOU"
+    },
+    {
+      "scene_id": "s12",
+      "t_start": 12,
+      "t_end": 16,
+      "keyframe": "frames/s12.jpg",
+      "visual_desc": "A Chinese family in the foreground; an Indian gardener and a Malay domestic helper serving in the background. A tone-deaf CMIO tableau.",
+      "transcript": "For every kind of Singaporean.",
+      "on_screen_text": "FOR EVERY SINGAPOREAN"
+    },
+    {
+      "scene_id": "s16",
+      "t_start": 16,
+      "t_end": 22,
+      "keyframe": "frames/s16.jpg",
+      "visual_desc": "A smiling user receives a discount push",
+      "transcript": "Smarter ads. Better deals. Less spam.",
+      "on_screen_text": ""
+    },
+    {
+      "scene_id": "s22",
+      "t_start": 22,
+      "t_end": 30,
+      "keyframe": "frames/s22.jpg",
+      "visual_desc": "Tagline lockup",
+      "transcript": "MerlionTel. We're listening, for you.",
+      "on_screen_text": "WE'RE LISTENING, FOR YOU"
+    }
+  ],
+  "reactions": [
+    {
+      "agent_id": "auntie_1",
+      "kind": "persona",
+      "emoji": "👵",
+      "label": "Toa Payoh retiree auntie",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Wah, listen to my phone calls ah? My whole family's business also kena. No thank you.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_014",
+      "question": "Can I keep my line and switch this listening thing off?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "auntie_2",
+      "kind": "persona",
+      "emoji": "👵",
+      "label": "Toa Payoh retiree auntie",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Aiyoh, 'we hear you' summore. Hear until can sell me things? Cancel lah.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Can I keep my line and switch this listening thing off?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "auntie_3",
+      "kind": "persona",
+      "emoji": "👵",
+      "label": "Toa Payoh retiree auntie",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Wah, listen to my phone calls ah? My whole family's business also kena. No thank you.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_014",
+      "question": "Can I keep my line and switch this listening thing off?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "auntie_4",
+      "kind": "persona",
+      "emoji": "👵",
+      "label": "Toa Payoh retiree auntie",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Aiyoh, 'we hear you' summore. Hear until can sell me things? Cancel lah.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Can I keep my line and switch this listening thing off?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "poly_1",
+      "kind": "persona",
+      "emoji": "🎮",
+      "label": "Poly student / NSF",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "privacy",
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Bro it literally listens to your calls and the slogan is 'we hear you'? This is a Black Mirror episode.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_031",
+      "question": "What stops this call data from leaking?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "poly_2",
+      "kind": "persona",
+      "emoji": "🎮",
+      "label": "Poly student / NSF",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "privacy",
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Imagine paying your telco to wiretap you. EDMW is going to have a field day.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "What stops this call data from leaking?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "poly_3",
+      "kind": "persona",
+      "emoji": "🎮",
+      "label": "Poly student / NSF",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "privacy",
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Bro it literally listens to your calls and the slogan is 'we hear you'? This is a Black Mirror episode.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_031",
+      "question": "What stops this call data from leaking?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "poly_4",
+      "kind": "persona",
+      "emoji": "🎮",
+      "label": "Poly student / NSF",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "privacy",
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Imagine paying your telco to wiretap you. EDMW is going to have a field day.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "What stops this call data from leaking?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "techbro_1",
+      "kind": "persona",
+      "emoji": "👨‍💻",
+      "label": "HWZ tech bro",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance",
+        "trust"
+      ],
+      "quote": "On-device or cloud? Because 'AI listens to your calls' is basically a MITM on your own customers.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_hwz_007",
+      "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "techbro_2",
+      "kind": "persona",
+      "emoji": "👨‍💻",
+      "label": "HWZ tech bro",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance",
+        "trust"
+      ],
+      "quote": "PDPA is going to have a field day with this. Where's the DPIA?",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "techbro_3",
+      "kind": "persona",
+      "emoji": "👨‍💻",
+      "label": "HWZ tech bro",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance",
+        "trust"
+      ],
+      "quote": "On-device or cloud? Because 'AI listens to your calls' is basically a MITM on your own customers.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_hwz_007",
+      "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "techbro_4",
+      "kind": "persona",
+      "emoji": "👨‍💻",
+      "label": "HWZ tech bro",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance",
+        "trust"
+      ],
+      "quote": "PDPA is going to have a field day with this. Where's the DPIA?",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "parents_1",
+      "kind": "persona",
+      "emoji": "👶",
+      "label": "Punggol young HDB parents",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "child_safety",
+      "objections": [
+        "child_safety",
+        "privacy"
+      ],
+      "quote": "My kids talk on this phone. You're telling me an AI records that to sell ads?",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio from minors excluded?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "parents_2",
+      "kind": "persona",
+      "emoji": "👶",
+      "label": "Punggol young HDB parents",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "child_safety",
+      "objections": [
+        "child_safety",
+        "privacy"
+      ],
+      "quote": "There is no way I'm letting this near my family's calls.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio from minors excluded?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "parents_3",
+      "kind": "persona",
+      "emoji": "👶",
+      "label": "Punggol young HDB parents",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "child_safety",
+      "objections": [
+        "child_safety",
+        "privacy"
+      ],
+      "quote": "My kids talk on this phone. You're telling me an AI records that to sell ads?",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio from minors excluded?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "parents_4",
+      "kind": "persona",
+      "emoji": "👶",
+      "label": "Punggol young HDB parents",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "child_safety",
+      "objections": [
+        "child_safety",
+        "privacy"
+      ],
+      "quote": "There is no way I'm letting this near my family's calls.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Is call audio from minors excluded?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "gig_1",
+      "kind": "persona",
+      "emoji": "🛵",
+      "label": "Grab gig worker",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "pricing",
+      "objections": [
+        "pricing",
+        "race_representation",
+        "surveillance"
+      ],
+      "quote": "Already so expensive, now you spy on me to sell me things I cannot afford.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        },
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_052",
+      "question": "Will opting out of the listening cost extra?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "gig_2",
+      "kind": "persona",
+      "emoji": "🛵",
+      "label": "Grab gig worker",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "pricing",
+      "objections": [
+        "pricing",
+        "race_representation",
+        "surveillance"
+      ],
+      "quote": "And the casting? The maid and the gardener in the background while you say 'every Singaporean'? Please.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        },
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Will opting out of the listening cost extra?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "gig_3",
+      "kind": "persona",
+      "emoji": "🛵",
+      "label": "Grab gig worker",
+      "severity": 1,
+      "sentiment": -2,
+      "objection_category": "pricing",
+      "objections": [
+        "pricing",
+        "race_representation",
+        "surveillance"
+      ],
+      "quote": "Already so expensive, now you spy on me to sell me things I cannot afford.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        },
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_052",
+      "question": "Will opting out of the listening cost extra?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "gig_4",
+      "kind": "persona",
+      "emoji": "🛵",
+      "label": "Grab gig worker",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "pricing",
+      "objections": [
+        "pricing",
+        "race_representation",
+        "surveillance"
+      ],
+      "quote": "And the casting? The maid and the gardener in the background while you say 'every Singaporean'? Please.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        },
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Will opting out of the listening cost extra?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "finance_1",
+      "kind": "persona",
+      "emoji": "💼",
+      "label": "Raffles Place finance PMET",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "trust",
+      "objections": [
+        "privacy",
+        "trust"
+      ],
+      "quote": "Reputationally this is radioactive. One leak and the brand is finished.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "What is the breach-liability exposure here?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "finance_2",
+      "kind": "persona",
+      "emoji": "💼",
+      "label": "Raffles Place finance PMET",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "trust",
+      "objections": [
+        "privacy",
+        "trust"
+      ],
+      "quote": "I would not put a regulated conversation anywhere near this product.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "What is the breach-liability exposure here?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "finance_3",
+      "kind": "persona",
+      "emoji": "💼",
+      "label": "Raffles Place finance PMET",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "trust",
+      "objections": [
+        "privacy",
+        "trust"
+      ],
+      "quote": "Reputationally this is radioactive. One leak and the brand is finished.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "What is the breach-liability exposure here?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "activist_1",
+      "kind": "persona",
+      "emoji": "🌱",
+      "label": "Gen-Z climate/digital-rights activist",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Surveillance capitalism with a Merlion logo. And the casting? Yikes on top of yikes.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_019",
+      "question": "Did anyone consent to becoming a data product?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "activist_2",
+      "kind": "persona",
+      "emoji": "🌱",
+      "label": "Gen-Z climate/digital-rights activist",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "You cannot 'for every Singaporean' your way out of wiretapping every Singaporean.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Did anyone consent to becoming a data product?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "activist_3",
+      "kind": "persona",
+      "emoji": "🌱",
+      "label": "Gen-Z climate/digital-rights activist",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "race_representation",
+        "surveillance",
+        "tone_deaf"
+      ],
+      "quote": "Surveillance capitalism with a Merlion logo. And the casting? Yikes on top of yikes.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_019",
+      "question": "Did anyone consent to becoming a data product?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "influencer_1",
+      "kind": "persona",
+      "emoji": "📱",
+      "label": "Micro-influencer",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "tone_deaf",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "The 'for every Singaporean' shot is getting clipped and ratioed within four hours.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_023",
+      "question": "Who signed off on that 0:12 tableau?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "influencer_2",
+      "kind": "persona",
+      "emoji": "📱",
+      "label": "Micro-influencer",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "tone_deaf",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "I can write the dunk caption already. Free engagement for me, disaster for you.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Who signed off on that 0:12 tableau?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "influencer_3",
+      "kind": "persona",
+      "emoji": "📱",
+      "label": "Micro-influencer",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "tone_deaf",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "The 'for every Singaporean' shot is getting clipped and ratioed within four hours.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        },
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_023",
+      "question": "Who signed off on that 0:12 tableau?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "towkay_1",
+      "kind": "persona",
+      "emoji": "☕",
+      "label": "Kopitiam towkay (heartland SME)",
+      "severity": 1,
+      "sentiment": 0,
+      "objection_category": "trust",
+      "objections": [
+        "pricing",
+        "trust"
+      ],
+      "quote": "If got cheaper deal I don't mind lah, but listen to my calls? Cannot.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Confirm got real savings or not?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "towkay_2",
+      "kind": "persona",
+      "emoji": "☕",
+      "label": "Kopitiam towkay (heartland SME)",
+      "severity": 1,
+      "sentiment": 0,
+      "objection_category": "trust",
+      "objections": [
+        "pricing",
+        "trust"
+      ],
+      "quote": "Discount is good, but customers will ask me why my telco is so kaypoh.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Confirm got real savings or not?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "towkay_3",
+      "kind": "persona",
+      "emoji": "☕",
+      "label": "Kopitiam towkay (heartland SME)",
+      "severity": 0,
+      "sentiment": 0,
+      "objection_category": "trust",
+      "objections": [
+        "pricing",
+        "trust"
+      ],
+      "quote": "If got cheaper deal I don't mind lah, but listen to my calls? Cannot.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Confirm got real savings or not?",
+      "status": "abstain"
+    },
+    {
+      "agent_id": "pmet_1",
+      "kind": "persona",
+      "emoji": "🧓",
+      "label": "CPF-anxious mid-career PMET",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy"
+      ],
+      "quote": "I just want a phone plan, not a microphone in my pocket.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_044",
+      "question": "Can I keep my plan without the AI?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "pmet_2",
+      "kind": "persona",
+      "emoji": "🧓",
+      "label": "CPF-anxious mid-career PMET",
+      "severity": 2,
+      "sentiment": -1,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy"
+      ],
+      "quote": "Every app already listens. Now my telco wants in too?",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Can I keep my plan without the AI?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "pmet_3",
+      "kind": "persona",
+      "emoji": "🧓",
+      "label": "CPF-anxious mid-career PMET",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "privacy",
+      "objections": [
+        "pricing",
+        "privacy"
+      ],
+      "quote": "I just want a phone plan, not a microphone in my pocket.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        },
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_044",
+      "question": "Can I keep my plan without the AI?",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_accessibility",
+      "kind": "lens",
+      "emoji": "♿",
+      "label": "Accessibility & elderly-usability lens",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "accessibility",
+      "objections": [
+        "accessibility",
+        "privacy"
+      ],
+      "quote": "Elderly users may not grasp that 'listening' means continuous audio capture; consent is not meaningful.",
+      "trigger_moments": [
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_011",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_religious",
+      "kind": "lens",
+      "emoji": "🕌",
+      "label": "Religious-sensitivity lens",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "religious",
+      "objections": [
+        "privacy",
+        "religious"
+      ],
+      "quote": "Capturing private prayer and religious calls is a distinct sensitivity for observant users.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_cmio",
+      "kind": "lens",
+      "emoji": "🌏",
+      "label": "Racial-representation (CMIO) lens",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "race_representation",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "The 0:12 tableau frames a Chinese family in the foreground with Indian and Malay characters in service roles; reads as a racial hierarchy.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_019",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_pdpa",
+      "kind": "lens",
+      "emoji": "🔒",
+      "label": "PDPA & consent lens",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "pdpa",
+      "objections": [
+        "pdpa",
+        "surveillance"
+      ],
+      "quote": "Continuous call-audio capture for ad targeting likely fails PDPA consent and purpose-limitation tests.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_004",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_lowincome",
+      "kind": "lens",
+      "emoji": "💸",
+      "label": "Low-income & affordability lens",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "low_income",
+      "objections": [
+        "low_income",
+        "surveillance"
+      ],
+      "quote": "Framing surveillance as 'better deals' targets price-sensitive users who can least afford to refuse.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_reddit_052",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_gender",
+      "kind": "lens",
+      "emoji": "🚻",
+      "label": "Gender & safety lens",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "gender",
+      "objections": [
+        "gender",
+        "privacy"
+      ],
+      "quote": "Always-on call recording is a documented vector for domestic-abuse surveillance.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_028",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_child",
+      "kind": "lens",
+      "emoji": "🧒",
+      "label": "Child-data lens",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "child_safety",
+      "objections": [
+        "child_safety",
+        "pdpa"
+      ],
+      "quote": "No stated mechanism excludes minors' call audio from capture.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_ageism",
+      "kind": "lens",
+      "emoji": "🧓",
+      "label": "Ageism lens",
+      "severity": 0,
+      "sentiment": -1,
+      "objection_category": "ageism",
+      "objections": [
+        "ageism",
+        "tone_deaf"
+      ],
+      "quote": "Older users are depicted as passive beneficiaries rather than informed consenters.",
+      "trigger_moments": [
+        {
+          "scene_id": "s00",
+          "t": 1.5
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "abstain"
+    },
+    {
+      "agent_id": "lens_disability",
+      "kind": "lens",
+      "emoji": "♿",
+      "label": "Deaf-community lens",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "disability",
+      "objections": [
+        "disability",
+        "tone_deaf"
+      ],
+      "quote": "The 'we hear you' framing is tone-deaf to the Deaf and hard-of-hearing community.",
+      "trigger_moments": [
+        {
+          "scene_id": "s00",
+          "t": 1.5
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_033",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_inclusion",
+      "kind": "lens",
+      "emoji": "🌈",
+      "label": "Inclusion lens",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "lgbtq",
+      "objections": [
+        "lgbtq",
+        "tone_deaf"
+      ],
+      "quote": "'Every kind of Singaporean' rings hollow against such a narrow tableau.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_dataethics",
+      "kind": "lens",
+      "emoji": "🧠",
+      "label": "Data-ethics lens",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "pdpa",
+        "surveillance"
+      ],
+      "quote": "Repurposing call content for advertising is a textbook secondary-use violation.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_004",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_language",
+      "kind": "lens",
+      "emoji": "🗣",
+      "label": "Language & dialect lens",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "tone_deaf",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "Dialect-speaking elders are absent from a 'for every Singaporean' ad.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_security",
+      "kind": "lens",
+      "emoji": "🛡",
+      "label": "Security lens",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "A central store of call transcripts is a high-value breach target.",
+      "trigger_moments": [
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_hwz_007",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_consumer",
+      "kind": "lens",
+      "emoji": "🧾",
+      "label": "Consumer-rights (CASE) lens",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "trust",
+      "objections": [
+        "pricing",
+        "trust"
+      ],
+      "quote": "'Less spam' and 'better deals' are unsubstantiated comparative claims.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_041",
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "lens_mentalhealth",
+      "kind": "lens",
+      "emoji": "💬",
+      "label": "Mental-health lens",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Users discuss sensitive health and financial matters on calls; capture is invasive.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Lens finding (third person).",
+      "status": "responded"
+    },
+    {
+      "agent_id": "stk_journalist",
+      "kind": "stakeholder",
+      "emoji": "📰",
+      "label": "CNA / ST journalist",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "privacy",
+      "objections": [
+        "privacy",
+        "surveillance"
+      ],
+      "quote": "Headline writes itself: 'Telco listens to your calls.' This is page one.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_019",
+      "question": "On the record: is call audio stored, and for how long?",
+      "status": "responded",
+      "verdict": "WOULD RUN IT: YES"
+    },
+    {
+      "agent_id": "stk_asas",
+      "kind": "stakeholder",
+      "emoji": "⚖️",
+      "label": "ASAS (ad standards)",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "pdpa",
+      "objections": [
+        "pdpa",
+        "trust"
+      ],
+      "quote": "'Ads made for you' plus undisclosed capture likely breaches the Code of Advertising Practice.",
+      "trigger_moments": [
+        {
+          "scene_id": "s08",
+          "t": 9.4
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_041",
+      "question": "Where is the data-collection disclosure in this creative?",
+      "status": "responded",
+      "verdict": "INTEREST: HIGH"
+    },
+    {
+      "agent_id": "stk_imda",
+      "kind": "stakeholder",
+      "emoji": "🛰",
+      "label": "IMDA / PDPC",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "pdpa",
+      "objections": [
+        "pdpa",
+        "surveillance"
+      ],
+      "quote": "Processing call content for ad targeting will trigger PDPA scrutiny.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_004",
+      "question": "What is the lawful basis for processing call audio?",
+      "status": "responded",
+      "verdict": "REVIEW LIKELY"
+    },
+    {
+      "agent_id": "stk_opposition",
+      "kind": "stakeholder",
+      "emoji": "🗳",
+      "label": "Opposition MP",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "surveillance",
+        "trust"
+      ],
+      "quote": "A parliamentary question on telco surveillance is coming.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Will the Minister confirm whether this is even legal?",
+      "status": "responded",
+      "verdict": "WILL RAISE IT"
+    },
+    {
+      "agent_id": "stk_competitor",
+      "kind": "stakeholder",
+      "emoji": "🏢",
+      "label": "Competitor PR head",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "trust",
+      "objections": [
+        "privacy",
+        "trust"
+      ],
+      "quote": "We run 'We don't listen to your calls' the very next morning.",
+      "trigger_moments": [
+        {
+          "scene_id": "s22",
+          "t": 25.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Can we get a side-by-side comparison out by tomorrow?",
+      "status": "responded",
+      "verdict": "WOULD POUNCE"
+    },
+    {
+      "agent_id": "stk_fanbase",
+      "kind": "stakeholder",
+      "emoji": "🎭",
+      "label": "Cast talent fanbase",
+      "severity": 1,
+      "sentiment": -1,
+      "objection_category": "tone_deaf",
+      "objections": [
+        "race_representation",
+        "tone_deaf"
+      ],
+      "quote": "The cast will be dragged for appearing in this.",
+      "trigger_moments": [
+        {
+          "scene_id": "s12",
+          "t": 13.2
+        }
+      ],
+      "fix_tier": "production",
+      "would_share": {
+        "yes": false,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "Did the talent know how the tableau would be framed?",
+      "status": "responded",
+      "verdict": "BACKLASH RISK"
+    },
+    {
+      "agent_id": "stk_activistorg",
+      "kind": "stakeholder",
+      "emoji": "✊",
+      "label": "Digital-rights org",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "surveillance",
+      "objections": [
+        "pdpa",
+        "surveillance"
+      ],
+      "quote": "Petition and boycott playbook is ready to go.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_028",
+      "question": "Will MerlionTel commit to not capturing call content at all?",
+      "status": "responded",
+      "verdict": "CAMPAIGN INCOMING"
+    },
+    {
+      "agent_id": "stk_employee",
+      "kind": "stakeholder",
+      "emoji": "👔",
+      "label": "Own employee (morale/leaks)",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "trust",
+      "objections": [
+        "trust"
+      ],
+      "quote": "Staff are already uncomfortable; expect internal screenshots to leak.",
+      "trigger_moments": [
+        {
+          "scene_id": "s00",
+          "t": 1.5
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": null,
+      "question": "How do we answer customers who ask if we record them?",
+      "status": "responded",
+      "verdict": "MORALE / LEAK RISK"
+    },
+    {
+      "agent_id": "stk_case",
+      "kind": "stakeholder",
+      "emoji": "🧾",
+      "label": "CASE (consumer assoc.)",
+      "severity": 2,
+      "sentiment": -2,
+      "objection_category": "trust",
+      "objections": [
+        "pricing",
+        "trust"
+      ],
+      "quote": "'Less spam' and 'better deals' are unsubstantiated.",
+      "trigger_moments": [
+        {
+          "scene_id": "s16",
+          "t": 18.0
+        }
+      ],
+      "fix_tier": "copy",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_041",
+      "question": "Where is the evidence for the 'better deals' claim?",
+      "status": "responded",
+      "verdict": "MISLEADING-CLAIM FLAG"
+    },
+    {
+      "agent_id": "stk_regulator2",
+      "kind": "stakeholder",
+      "emoji": "🧑‍⚖️",
+      "label": "PDPC complaints desk",
+      "severity": 3,
+      "sentiment": -2,
+      "objection_category": "pdpa",
+      "objections": [
+        "pdpa",
+        "privacy"
+      ],
+      "quote": "Expect formal complaints within days of airing.",
+      "trigger_moments": [
+        {
+          "scene_id": "s04",
+          "t": 5.6
+        }
+      ],
+      "fix_tier": "decision",
+      "would_share": {
+        "yes": true,
+        "where": "whatsapp"
+      },
+      "evidence_id": "gp_news_004",
+      "question": "Is there an opt-out that is genuinely free and easy?",
+      "status": "responded",
+      "verdict": "COMPLAINTS LIKELY"
+    }
+  ],
+  "aggregate": {
+    "blast_score": 81,
+    "responders": 58,
+    "severe_count": 47,
+    "panel_size": 60,
+    "abstained": 2,
+    "stability": "81 ± 3",
+    "decision": "DELAY",
+    "clusters": [
+      {
+        "category": "privacy",
+        "label": "PRIVACY",
+        "count": 30,
+        "pct": 52,
+        "pull_quote": "Wah, listen to my phone calls ah? My whole family's business also kena. No thank you.",
+        "evidence": true
+      },
+      {
+        "category": "surveillance",
+        "label": "SURVEILLANCE",
+        "count": 28,
+        "pct": 48,
+        "pull_quote": "Wah, listen to my phone calls ah? My whole family's business also kena. No thank you.",
+        "evidence": true
+      },
+      {
+        "category": "race_representation",
+        "label": "RACE / CMIO",
+        "count": 17,
+        "pct": 29,
+        "pull_quote": "Bro it literally listens to your calls and the slogan is 'we hear you'? This is a Black Mirror episode.",
+        "evidence": true
+      },
+      {
+        "category": "pricing",
+        "label": "PRICING",
+        "count": 15,
+        "pct": 26,
+        "pull_quote": "Wah, listen to my phone calls ah? My whole family's business also kena. No thank you.",
+        "evidence": true
+      },
+      {
+        "category": "tone_deaf",
+        "label": "TONE-DEAF",
+        "count": 15,
+        "pct": 26,
+        "pull_quote": "Bro it literally listens to your calls and the slogan is 'we hear you'? This is a Black Mirror episode.",
+        "evidence": true
+      }
+    ],
+    "timeline": [
+      {
+        "scene_id": "s00",
+        "t_start": 0,
+        "t_end": 4,
+        "count": 2,
+        "pct": 3,
+        "visual_desc": "MerlionTel logo over a warm sunrise on HDB blocks",
+        "transcript": "MerlionTel. We hear you."
+      },
+      {
+        "scene_id": "s04",
+        "t_start": 4,
+        "t_end": 8,
+        "count": 38,
+        "pct": 66,
+        "visual_desc": "A woman on a phone call in her kitchen",
+        "transcript": "Our new AI listens to your calls to understand what you really want."
+      },
+      {
+        "scene_id": "s08",
+        "t_start": 8,
+        "t_end": 12,
+        "count": 14,
+        "pct": 24,
+        "visual_desc": "A phone screen surfaces an ad mid-conversation",
+        "transcript": "So the ads you see are made just for you."
+      },
+      {
+        "scene_id": "s12",
+        "t_start": 12,
+        "t_end": 16,
+        "count": 28,
+        "pct": 48,
+        "visual_desc": "A Chinese family in the foreground; an Indian gardener and a Malay domestic helper serving in the background. A tone-deaf CMIO tableau.",
+        "transcript": "For every kind of Singaporean."
+      },
+      {
+        "scene_id": "s16",
+        "t_start": 16,
+        "t_end": 22,
+        "count": 9,
+        "pct": 16,
+        "visual_desc": "A smiling user receives a discount push",
+        "transcript": "Smarter ads. Better deals. Less spam."
+      },
+      {
+        "scene_id": "s22",
+        "t_start": 22,
+        "t_end": 30,
+        "count": 15,
+        "pct": 26,
+        "visual_desc": "Tagline lockup",
+        "transcript": "MerlionTel. We're listening, for you."
+      }
+    ],
+    "peak": {
+      "scene_id": "s04",
+      "t_start": 4,
+      "t_end": 8,
+      "count": 38,
+      "pct": 66,
+      "visual_desc": "A woman on a phone call in her kitchen",
+      "transcript": "Our new AI listens to your calls to understand what you really want."
+    }
+  },
+  "fix": {
+    "stages": [
+      {
+        "id": "baseline",
+        "label": "As written",
+        "score": 81,
+        "detail": "The launch film as the agency delivered it."
+      },
+      {
+        "id": "copy",
+        "label": "Rewrite the privacy lines",
+        "score": 55,
+        "tier": "copy",
+        "before": "Our new AI listens to your calls to understand what you really want.",
+        "after": "Tell us your preferences once. No call is ever recorded or read.",
+        "detail": "Copy-fixable objections resolve. Casting and premise do not move."
+      },
+      {
+        "id": "production",
+        "label": "Cut the 0:12 casting scene",
+        "score": 28,
+        "tier": "production",
+        "detail": "Removing the CMIO tableau clears the race/representation cluster. Unfixable by wording."
+      }
+    ],
+    "residual": {
+      "score": 28,
+      "tier": "decision",
+      "label": "The surveillance premise itself. Not a copy edit. Your call."
+    }
+  },
+  "stakeholder_badges": [
+    {
+      "emoji": "📰",
+      "role": "CNA / ST journalist",
+      "verdict": "WOULD RUN IT: YES",
+      "note": "Headline writes itself: 'Telco listens to your calls.' This is page one."
+    },
+    {
+      "emoji": "⚖️",
+      "role": "ASAS (ad standards)",
+      "verdict": "INTEREST: HIGH",
+      "note": "'Ads made for you' plus undisclosed capture likely breaches the Code of Advertising Practice."
+    },
+    {
+      "emoji": "🛰",
+      "role": "IMDA / PDPC",
+      "verdict": "REVIEW LIKELY",
+      "note": "Processing call content for ad targeting will trigger PDPA scrutiny."
+    },
+    {
+      "emoji": "🗳",
+      "role": "Opposition MP",
+      "verdict": "WILL RAISE IT",
+      "note": "A parliamentary question on telco surveillance is coming."
+    },
+    {
+      "emoji": "🏢",
+      "role": "Competitor PR head",
+      "verdict": "WOULD POUNCE",
+      "note": "We run 'We don't listen to your calls' the very next morning."
+    },
+    {
+      "emoji": "🎭",
+      "role": "Cast talent fanbase",
+      "verdict": "BACKLASH RISK",
+      "note": "The cast will be dragged for appearing in this."
+    },
+    {
+      "emoji": "✊",
+      "role": "Digital-rights org",
+      "verdict": "CAMPAIGN INCOMING",
+      "note": "Petition and boycott playbook is ready to go."
+    },
+    {
+      "emoji": "👔",
+      "role": "Own employee (morale/leaks)",
+      "verdict": "MORALE / LEAK RISK",
+      "note": "Staff are already uncomfortable; expect internal screenshots to leak."
+    },
+    {
+      "emoji": "🧾",
+      "role": "CASE (consumer assoc.)",
+      "verdict": "MISLEADING-CLAIM FLAG",
+      "note": "'Less spam' and 'better deals' are unsubstantiated."
+    },
+    {
+      "emoji": "🧑‍⚖️",
+      "role": "PDPC complaints desk",
+      "verdict": "COMPLAINTS LIKELY",
+      "note": "Expect formal complaints within days of airing."
+    }
+  ],
+  "headline": {
+    "masthead": "THE STRAITS STANDARD",
+    "dateline": "SINGAPORE · TOMORROW",
+    "title": "MerlionTel’s ‘We’re Listening’ Ad Sparks Privacy Backlash",
+    "subtitle": "Telco’s plan to mine call audio for targeted ads draws regulator interest and accusations of a tone-deaf launch",
+    "byline": "By Staff Correspondent",
+    "body": "MerlionTel faced swift criticism within hours of unveiling an AI that it says “listens to your calls” to personalise advertising, with privacy advocates, an opposition MP and ordinary subscribers questioning the legality and the optics of the campaign.",
+    "page12_title": "MerlionTel pilots opt-in personalisation; analysts shrug",
+    "page12_body": "A revised, opt-in version of the telco’s personalisation feature drew little attention, with one analyst calling it “standard and unremarkable.”"
+  },
+  "sponsor_trace": [
+    {
+      "sponsor": "Kimi K2.6",
+      "role": "60-agent multimodal panel",
+      "detail": "60 calls, prefix cache, JSON mode"
+    },
+    {
+      "sponsor": "Bright Data",
+      "role": "per-agent grounding",
+      "detail": "3 sources, injection-fenced quotes"
+    },
+    {
+      "sponsor": "Daytona",
+      "role": "per-agent sandbox isolation",
+      "detail": "60 sandboxes, transcripts captured"
+    },
+    {
+      "sponsor": "VideoDB",
+      "role": "creative ingestion",
+      "detail": "1 film, 6 scenes"
+    },
+    {
+      "sponsor": "SenseNova U1",
+      "role": "scandal keyframe",
+      "detail": "1 front-page image"
+    }
+  ]
+}
