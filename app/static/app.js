@@ -239,15 +239,22 @@ function renderFrontpage(d) {
 
 function openQuote(r) {
   const kindLabel = { persona: "Persona · first person", lens: "Concern lens · third person", stakeholder: "Stakeholder" }[r.kind];
+  const grounded = r.grounding && r.grounding.length;
   $("qc-body").replaceChildren(
     el("div", { class: "qc-emoji" }, r.emoji),
     el("div", { class: "qc-role" }, `${r.label} — ${kindLabel}`),
     el("div", { class: "qc-quote" }, `“${r.quote}”`),
     el("div", { class: "qc-meta" },
       el("span", { class: "qc-tier " + r.fix_tier }, r.fix_tier + "-fixable"),
-      r.evidence_id
-        ? el("span", { class: "evi has" }, "📎 " + r.evidence_id)
-        : el("span", { class: "evi spec" }, "model speculation")),
+      el("span", { class: "qc-search" }, "🔍 " + (r.grounding_query || "—"))),
+    el("div", { class: "qc-ground" },
+      el("div", { class: "qc-ground-h" }, grounded ? "Grounded in its own scrape" : "Grounding"),
+      grounded
+        ? el("div", { class: "qc-snippets" }, r.grounding.map((g) =>
+            el("div", { class: "qc-snippet" },
+              el("span", { class: "qc-src" }, "📎 " + g.source),
+              el("span", { class: "qc-snip" }, "“" + g.text + "”"))))
+        : el("span", { class: "evi spec" }, "model speculation — no evidence found for this objection")),
     el("div", { class: "qc-q" }, el("b", {}, "Press-conference question: "), r.question),
   );
   $("quote-card").classList.remove("hidden");
@@ -370,7 +377,10 @@ function playSwarm(d) {
           el("span", { class: "fi-emoji" }, r.emoji),
           el("div", { class: "fi-body" },
             el("div", { class: "fi-label" }, r.label),
-            el("div", { class: "fi-quote" }, "“" + r.quote + "”"))));
+            el("div", { class: "fi-quote" }, "“" + r.quote + "”"),
+            el("div", { class: "fi-ground" },
+              "🔍 " + (r.grounding_query || "no live grounding") +
+              (r.grounding && r.grounding.length ? "  ·  found on " + r.grounding[0].source : "")))));
         while (feed.children.length > 7) feed.lastChild.remove();
       }
 

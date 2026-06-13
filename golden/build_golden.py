@@ -59,6 +59,73 @@ CAT_LABEL = {
     "ageism": "AGEISM", "disability": "DISABILITY", "lgbtq": "INCLUSION",
 }
 
+# Per-source grounding snippets = what an agent's own scrape "found". Synthetic, SIMULATED.
+SNIPPETS = {
+    "gp_reddit_014": {"source": "r/singapore", "url": "reddit.com/r/singapore",
+        "text": "My mother almost gave her OTP to a 'bank' caller last week. Now a telco wants to record calls? The elderly will get destroyed by this."},
+    "gp_reddit_031": {"source": "r/singapore", "url": "reddit.com/r/singapore",
+        "text": "A telco listening to your calls to sell ads is literally the plot of a dystopia. Hard pass."},
+    "gp_hwz_007": {"source": "HardwareZone EDMW", "url": "forums.hardwarezone.com.sg",
+        "text": "If the audio is processed server-side it's a goldmine for hackers. One breach and every call transcript leaks. PDPC will have a field day."},
+    "gp_reddit_052": {"source": "r/singapore", "url": "reddit.com/r/singapore",
+        "text": "Cost of living already siao, now they monetise our private conversations and call it 'better deals'. No thanks."},
+    "gp_reddit_044": {"source": "r/singapore", "url": "reddit.com/r/singapore",
+        "text": "Every app already wants my data. The day my telco starts listening to calls is the day I port out."},
+    "gp_news_019": {"source": "Google News SG", "url": "news.google.com",
+        "text": "Commentators flagged the ad's casting, with minority characters shown in service roles while the slogan claimed to speak 'for every Singaporean'."},
+    "gp_news_023": {"source": "Google News SG", "url": "news.google.com",
+        "text": "Earlier 'inclusive' campaigns that tokenised race drew swift online ridicule and brand apologies within 48 hours."},
+    "gp_news_011": {"source": "CNA (report)", "url": "news.google.com",
+        "text": "Advocates note that consent for always-listening features is rarely meaningful for elderly users who do not read the fine print."},
+    "gp_news_028": {"source": "Google News SG", "url": "news.google.com",
+        "text": "Support groups warn that always-on call recording can become a surveillance tool against domestic-abuse victims."},
+    "gp_news_033": {"source": "Google News SG", "url": "news.google.com",
+        "text": "Disability advocates criticised 'we hear you' marketing as tone-deaf to the Deaf and hard-of-hearing community."},
+    "gp_news_004": {"source": "PDPC guidance (news)", "url": "news.google.com",
+        "text": "Processing call content for advertising raises clear PDPA purpose-limitation and consent concerns, lawyers say."},
+    "gp_news_041": {"source": "CASE note (news)", "url": "news.google.com",
+        "text": "Comparative claims like 'less spam' and 'better deals' require substantiation under advertising guidelines."},
+}
+
+# Personalized search query per agent = what THIS agent goes looking for. Keyed by base id.
+GQ = {
+    "auntie": "r/singapore elderly privacy scam call recording",
+    "poly": "r/singapore telco listening to calls surveillance",
+    "techbro": "HardwareZone MerlionTel call data on-device PDPA",
+    "parents": "r/singapore children data privacy app recording",
+    "gig": "r/singapore cost of living telco ads privacy",
+    "finance": "MerlionTel data breach reputation liability",
+    "activist": "Singapore surveillance capitalism ad casting backlash",
+    "influencer": "Singapore ad casting race ratio backlash",
+    "towkay": "MerlionTel telco plan deals heartland",
+    "pmet": "r/singapore telco privacy microphone switch plan",
+    "lens_accessibility": "Singapore elderly consent always-listening accessibility",
+    "lens_religious": "Singapore Muslim call recording religious privacy",
+    "lens_cmio": "Singapore ad CMIO casting representation backlash",
+    "lens_pdpa": "PDPA call recording advertising consent Singapore",
+    "lens_lowincome": "Singapore low income surveillance targeting better deals",
+    "lens_gender": "always-on recording domestic abuse surveillance Singapore",
+    "lens_child": "children minors call audio data protection Singapore",
+    "lens_ageism": "elderly depiction advertising consent Singapore",
+    "lens_disability": "Deaf community we hear you tone-deaf advertising",
+    "lens_inclusion": "every Singaporean inclusion tokenism ad",
+    "lens_dataethics": "secondary use call content advertising data ethics",
+    "lens_language": "dialect elderly representation Singapore ad",
+    "lens_security": "call transcript breach data security Singapore",
+    "lens_consumer": "less spam better deals unsubstantiated claim CASE",
+    "lens_mentalhealth": "sensitive calls health financial privacy capture",
+    "stk_journalist": "MerlionTel listens to your calls news angle",
+    "stk_asas": "advertising standards undisclosed data collection Singapore",
+    "stk_imda": "IMDA PDPC call content advertising review",
+    "stk_opposition": "telco surveillance parliamentary question Singapore",
+    "stk_competitor": "telco we don't listen to your calls campaign",
+    "stk_fanbase": "ad cast talent backlash Singapore",
+    "stk_activistorg": "digital rights petition boycott surveillance Singapore",
+    "stk_employee": "MerlionTel staff morale recording customers",
+    "stk_case": "less spam better deals substantiation consumer Singapore",
+    "stk_regulator2": "PDPC complaint opt-out call recording Singapore",
+}
+
 
 def moments(scenes):
     return [{"scene_id": s, "t": SCENE_T[s]} for s in scenes]
@@ -70,13 +137,17 @@ reactions = []
 def add(agent_id, kind, emoji, label, severity, sentiment, primary, objections,
         quote, scenes, fix_tier, question, evidence_id=None, where="whatsapp",
         status="responded"):
+    parts = agent_id.rsplit("_", 1)
+    base = parts[0] if (len(parts) == 2 and parts[1].isdigit()) else agent_id
+    grounding = [{"id": evidence_id, **SNIPPETS[evidence_id]}] if evidence_id in SNIPPETS else []
     reactions.append({
         "agent_id": agent_id, "kind": kind, "emoji": emoji, "label": label,
         "severity": severity, "sentiment": sentiment,
         "objection_category": primary, "objections": sorted(set(objections)),
         "quote": quote, "trigger_moments": moments(scenes), "fix_tier": fix_tier,
         "would_share": {"yes": severity >= 2, "where": where},
-        "evidence_id": evidence_id, "question": question, "status": status,
+        "evidence_id": evidence_id, "grounding_query": GQ.get(base, ""),
+        "grounding": grounding, "question": question, "status": status,
     })
 
 
@@ -350,9 +421,15 @@ headline = {
     "page12_body": "A revised, opt-in version of the telco’s personalisation feature drew little attention, with one analyst calling it “standard and unremarkable.”",
 }
 
+grounded_agents = [r for r in reactions if r["grounding"]]
+grounding_index = {}
+for r in reactions:
+    for g in r["grounding"]:
+        grounding_index[g["source"]] = grounding_index.get(g["source"], 0) + 1
+
 sponsor_trace = [
     {"sponsor": "Kimi K2.6", "role": "60-agent multimodal panel", "detail": "60 calls, prefix cache, JSON mode"},
-    {"sponsor": "Bright Data", "role": "per-agent grounding", "detail": "3 sources, injection-fenced quotes"},
+    {"sponsor": "Bright Data", "role": "per-agent self-grounding", "detail": f"{len(grounded_agents)} agents grounded, {len(grounding_index)} sources"},
     {"sponsor": "Daytona", "role": "per-agent sandbox isolation", "detail": "60 sandboxes, transcripts captured"},
     {"sponsor": "VideoDB", "role": "creative ingestion", "detail": f"1 film, {len(CREATIVE)} scenes"},
     {"sponsor": "SenseNova U1", "role": "scandal keyframe", "detail": "1 front-page image"},
@@ -363,6 +440,7 @@ golden = {
     "mode": "fixture",
     "scenario": SCENARIO,
     "creative_manifest": CREATIVE,
+    "grounding_index": grounding_index,
     "reactions": reactions,
     "aggregate": {
         "blast_score": blast_score, "responders": n_resp, "severe_count": len(severe),
@@ -382,5 +460,6 @@ with open(OUT, "w", encoding="utf-8") as f:
 print(f"wrote {OUT}")
 print(f"  panel={len(reactions)} responders={n_resp} severe={len(severe)} "
       f"blast={blast_score} decision={decision}")
+print(f"  grounded={len(grounded_agents)}/{len(reactions)} agents  sources={grounding_index}")
 print(f"  peak scene={peak['scene_id']} @ {peak['pct']}%  top cluster={clusters[0]['label']} {clusters[0]['pct']}%")
 print("  clusters:", ", ".join(f"{c['label']} {c['pct']}%" for c in clusters))

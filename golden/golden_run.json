@@ -63,6 +63,14 @@
       "on_screen_text": "WE'RE LISTENING, FOR YOU"
     }
   ],
+  "grounding_index": {
+    "r/singapore": 9,
+    "HardwareZone EDMW": 3,
+    "Google News SG": 9,
+    "CNA (report)": 1,
+    "PDPC guidance (news)": 4,
+    "CASE note (news)": 3
+  },
   "reactions": [
     {
       "agent_id": "auntie_1",
@@ -98,6 +106,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_014",
+      "grounding_query": "r/singapore elderly privacy scam call recording",
+      "grounding": [
+        {
+          "id": "gp_reddit_014",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "My mother almost gave her OTP to a 'bank' caller last week. Now a telco wants to record calls? The elderly will get destroyed by this."
+        }
+      ],
       "question": "Can I keep my line and switch this listening thing off?",
       "status": "responded"
     },
@@ -135,6 +152,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore elderly privacy scam call recording",
+      "grounding": [],
       "question": "Can I keep my line and switch this listening thing off?",
       "status": "responded"
     },
@@ -172,6 +191,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_014",
+      "grounding_query": "r/singapore elderly privacy scam call recording",
+      "grounding": [
+        {
+          "id": "gp_reddit_014",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "My mother almost gave her OTP to a 'bank' caller last week. Now a telco wants to record calls? The elderly will get destroyed by this."
+        }
+      ],
       "question": "Can I keep my line and switch this listening thing off?",
       "status": "responded"
     },
@@ -209,6 +237,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore elderly privacy scam call recording",
+      "grounding": [],
       "question": "Can I keep my line and switch this listening thing off?",
       "status": "responded"
     },
@@ -251,6 +281,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_031",
+      "grounding_query": "r/singapore telco listening to calls surveillance",
+      "grounding": [
+        {
+          "id": "gp_reddit_031",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "A telco listening to your calls to sell ads is literally the plot of a dystopia. Hard pass."
+        }
+      ],
       "question": "What stops this call data from leaking?",
       "status": "responded"
     },
@@ -293,6 +332,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore telco listening to calls surveillance",
+      "grounding": [],
       "question": "What stops this call data from leaking?",
       "status": "responded"
     },
@@ -335,6 +376,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_031",
+      "grounding_query": "r/singapore telco listening to calls surveillance",
+      "grounding": [
+        {
+          "id": "gp_reddit_031",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "A telco listening to your calls to sell ads is literally the plot of a dystopia. Hard pass."
+        }
+      ],
       "question": "What stops this call data from leaking?",
       "status": "responded"
     },
@@ -377,6 +427,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore telco listening to calls surveillance",
+      "grounding": [],
       "question": "What stops this call data from leaking?",
       "status": "responded"
     },
@@ -410,6 +462,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_hwz_007",
+      "grounding_query": "HardwareZone MerlionTel call data on-device PDPA",
+      "grounding": [
+        {
+          "id": "gp_hwz_007",
+          "source": "HardwareZone EDMW",
+          "url": "forums.hardwarezone.com.sg",
+          "text": "If the audio is processed server-side it's a goldmine for hackers. One breach and every call transcript leaks. PDPC will have a field day."
+        }
+      ],
       "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
       "status": "responded"
     },
@@ -443,6 +504,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "HardwareZone MerlionTel call data on-device PDPA",
+      "grounding": [],
       "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
       "status": "responded"
     },
@@ -476,6 +539,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_hwz_007",
+      "grounding_query": "HardwareZone MerlionTel call data on-device PDPA",
+      "grounding": [
+        {
+          "id": "gp_hwz_007",
+          "source": "HardwareZone EDMW",
+          "url": "forums.hardwarezone.com.sg",
+          "text": "If the audio is processed server-side it's a goldmine for hackers. One breach and every call transcript leaks. PDPC will have a field day."
+        }
+      ],
       "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
       "status": "responded"
     },
@@ -509,6 +581,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "HardwareZone MerlionTel call data on-device PDPA",
+      "grounding": [],
       "question": "Is call audio processed on-device or in the cloud, and where is it stored?",
       "status": "responded"
     },
@@ -541,6 +615,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore children data privacy app recording",
+      "grounding": [],
       "question": "Is call audio from minors excluded?",
       "status": "responded"
     },
@@ -573,6 +649,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore children data privacy app recording",
+      "grounding": [],
       "question": "Is call audio from minors excluded?",
       "status": "responded"
     },
@@ -605,6 +683,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore children data privacy app recording",
+      "grounding": [],
       "question": "Is call audio from minors excluded?",
       "status": "responded"
     },
@@ -637,6 +717,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore children data privacy app recording",
+      "grounding": [],
       "question": "Is call audio from minors excluded?",
       "status": "responded"
     },
@@ -674,6 +756,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_052",
+      "grounding_query": "r/singapore cost of living telco ads privacy",
+      "grounding": [
+        {
+          "id": "gp_reddit_052",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "Cost of living already siao, now they monetise our private conversations and call it 'better deals'. No thanks."
+        }
+      ],
       "question": "Will opting out of the listening cost extra?",
       "status": "responded"
     },
@@ -711,6 +802,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore cost of living telco ads privacy",
+      "grounding": [],
       "question": "Will opting out of the listening cost extra?",
       "status": "responded"
     },
@@ -748,6 +841,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_052",
+      "grounding_query": "r/singapore cost of living telco ads privacy",
+      "grounding": [
+        {
+          "id": "gp_reddit_052",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "Cost of living already siao, now they monetise our private conversations and call it 'better deals'. No thanks."
+        }
+      ],
       "question": "Will opting out of the listening cost extra?",
       "status": "responded"
     },
@@ -785,6 +887,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore cost of living telco ads privacy",
+      "grounding": [],
       "question": "Will opting out of the listening cost extra?",
       "status": "responded"
     },
@@ -813,6 +917,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel data breach reputation liability",
+      "grounding": [],
       "question": "What is the breach-liability exposure here?",
       "status": "responded"
     },
@@ -841,6 +947,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel data breach reputation liability",
+      "grounding": [],
       "question": "What is the breach-liability exposure here?",
       "status": "responded"
     },
@@ -869,6 +977,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel data breach reputation liability",
+      "grounding": [],
       "question": "What is the breach-liability exposure here?",
       "status": "responded"
     },
@@ -906,6 +1016,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_019",
+      "grounding_query": "Singapore surveillance capitalism ad casting backlash",
+      "grounding": [
+        {
+          "id": "gp_news_019",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Commentators flagged the ad's casting, with minority characters shown in service roles while the slogan claimed to speak 'for every Singaporean'."
+        }
+      ],
       "question": "Did anyone consent to becoming a data product?",
       "status": "responded"
     },
@@ -943,6 +1062,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "Singapore surveillance capitalism ad casting backlash",
+      "grounding": [],
       "question": "Did anyone consent to becoming a data product?",
       "status": "responded"
     },
@@ -980,6 +1101,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_019",
+      "grounding_query": "Singapore surveillance capitalism ad casting backlash",
+      "grounding": [
+        {
+          "id": "gp_news_019",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Commentators flagged the ad's casting, with minority characters shown in service roles while the slogan claimed to speak 'for every Singaporean'."
+        }
+      ],
       "question": "Did anyone consent to becoming a data product?",
       "status": "responded"
     },
@@ -1012,6 +1142,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_023",
+      "grounding_query": "Singapore ad casting race ratio backlash",
+      "grounding": [
+        {
+          "id": "gp_news_023",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Earlier 'inclusive' campaigns that tokenised race drew swift online ridicule and brand apologies within 48 hours."
+        }
+      ],
       "question": "Who signed off on that 0:12 tableau?",
       "status": "responded"
     },
@@ -1044,6 +1183,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "Singapore ad casting race ratio backlash",
+      "grounding": [],
       "question": "Who signed off on that 0:12 tableau?",
       "status": "responded"
     },
@@ -1076,6 +1217,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_023",
+      "grounding_query": "Singapore ad casting race ratio backlash",
+      "grounding": [
+        {
+          "id": "gp_news_023",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Earlier 'inclusive' campaigns that tokenised race drew swift online ridicule and brand apologies within 48 hours."
+        }
+      ],
       "question": "Who signed off on that 0:12 tableau?",
       "status": "responded"
     },
@@ -1104,6 +1254,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel telco plan deals heartland",
+      "grounding": [],
       "question": "Confirm got real savings or not?",
       "status": "responded"
     },
@@ -1132,6 +1284,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel telco plan deals heartland",
+      "grounding": [],
       "question": "Confirm got real savings or not?",
       "status": "responded"
     },
@@ -1160,6 +1314,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel telco plan deals heartland",
+      "grounding": [],
       "question": "Confirm got real savings or not?",
       "status": "abstain"
     },
@@ -1192,6 +1348,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_044",
+      "grounding_query": "r/singapore telco privacy microphone switch plan",
+      "grounding": [
+        {
+          "id": "gp_reddit_044",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "Every app already wants my data. The day my telco starts listening to calls is the day I port out."
+        }
+      ],
       "question": "Can I keep my plan without the AI?",
       "status": "responded"
     },
@@ -1224,6 +1389,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "r/singapore telco privacy microphone switch plan",
+      "grounding": [],
       "question": "Can I keep my plan without the AI?",
       "status": "responded"
     },
@@ -1256,6 +1423,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_044",
+      "grounding_query": "r/singapore telco privacy microphone switch plan",
+      "grounding": [
+        {
+          "id": "gp_reddit_044",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "Every app already wants my data. The day my telco starts listening to calls is the day I port out."
+        }
+      ],
       "question": "Can I keep my plan without the AI?",
       "status": "responded"
     },
@@ -1284,6 +1460,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_011",
+      "grounding_query": "Singapore elderly consent always-listening accessibility",
+      "grounding": [
+        {
+          "id": "gp_news_011",
+          "source": "CNA (report)",
+          "url": "news.google.com",
+          "text": "Advocates note that consent for always-listening features is rarely meaningful for elderly users who do not read the fine print."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1312,6 +1497,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "Singapore Muslim call recording religious privacy",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1340,6 +1527,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_019",
+      "grounding_query": "Singapore ad CMIO casting representation backlash",
+      "grounding": [
+        {
+          "id": "gp_news_019",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Commentators flagged the ad's casting, with minority characters shown in service roles while the slogan claimed to speak 'for every Singaporean'."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1368,6 +1564,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_004",
+      "grounding_query": "PDPA call recording advertising consent Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_004",
+          "source": "PDPC guidance (news)",
+          "url": "news.google.com",
+          "text": "Processing call content for advertising raises clear PDPA purpose-limitation and consent concerns, lawyers say."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1396,6 +1601,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_reddit_052",
+      "grounding_query": "Singapore low income surveillance targeting better deals",
+      "grounding": [
+        {
+          "id": "gp_reddit_052",
+          "source": "r/singapore",
+          "url": "reddit.com/r/singapore",
+          "text": "Cost of living already siao, now they monetise our private conversations and call it 'better deals'. No thanks."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1424,6 +1638,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_028",
+      "grounding_query": "always-on recording domestic abuse surveillance Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_028",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Support groups warn that always-on call recording can become a surveillance tool against domestic-abuse victims."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1452,6 +1675,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "children minors call audio data protection Singapore",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1480,6 +1705,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "elderly depiction advertising consent Singapore",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "abstain"
     },
@@ -1508,6 +1735,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_033",
+      "grounding_query": "Deaf community we hear you tone-deaf advertising",
+      "grounding": [
+        {
+          "id": "gp_news_033",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Disability advocates criticised 'we hear you' marketing as tone-deaf to the Deaf and hard-of-hearing community."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1536,6 +1772,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "every Singaporean inclusion tokenism ad",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1564,6 +1802,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_004",
+      "grounding_query": "secondary use call content advertising data ethics",
+      "grounding": [
+        {
+          "id": "gp_news_004",
+          "source": "PDPC guidance (news)",
+          "url": "news.google.com",
+          "text": "Processing call content for advertising raises clear PDPA purpose-limitation and consent concerns, lawyers say."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1592,6 +1839,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "dialect elderly representation Singapore ad",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1620,6 +1869,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_hwz_007",
+      "grounding_query": "call transcript breach data security Singapore",
+      "grounding": [
+        {
+          "id": "gp_hwz_007",
+          "source": "HardwareZone EDMW",
+          "url": "forums.hardwarezone.com.sg",
+          "text": "If the audio is processed server-side it's a goldmine for hackers. One breach and every call transcript leaks. PDPC will have a field day."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1648,6 +1906,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_041",
+      "grounding_query": "less spam better deals unsubstantiated claim CASE",
+      "grounding": [
+        {
+          "id": "gp_news_041",
+          "source": "CASE note (news)",
+          "url": "news.google.com",
+          "text": "Comparative claims like 'less spam' and 'better deals' require substantiation under advertising guidelines."
+        }
+      ],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1676,6 +1943,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "sensitive calls health financial privacy capture",
+      "grounding": [],
       "question": "Lens finding (third person).",
       "status": "responded"
     },
@@ -1704,6 +1973,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_019",
+      "grounding_query": "MerlionTel listens to your calls news angle",
+      "grounding": [
+        {
+          "id": "gp_news_019",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Commentators flagged the ad's casting, with minority characters shown in service roles while the slogan claimed to speak 'for every Singaporean'."
+        }
+      ],
       "question": "On the record: is call audio stored, and for how long?",
       "status": "responded",
       "verdict": "WOULD RUN IT: YES"
@@ -1733,6 +2011,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_041",
+      "grounding_query": "advertising standards undisclosed data collection Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_041",
+          "source": "CASE note (news)",
+          "url": "news.google.com",
+          "text": "Comparative claims like 'less spam' and 'better deals' require substantiation under advertising guidelines."
+        }
+      ],
       "question": "Where is the data-collection disclosure in this creative?",
       "status": "responded",
       "verdict": "INTEREST: HIGH"
@@ -1762,6 +2049,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_004",
+      "grounding_query": "IMDA PDPC call content advertising review",
+      "grounding": [
+        {
+          "id": "gp_news_004",
+          "source": "PDPC guidance (news)",
+          "url": "news.google.com",
+          "text": "Processing call content for advertising raises clear PDPA purpose-limitation and consent concerns, lawyers say."
+        }
+      ],
       "question": "What is the lawful basis for processing call audio?",
       "status": "responded",
       "verdict": "REVIEW LIKELY"
@@ -1791,6 +2087,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "telco surveillance parliamentary question Singapore",
+      "grounding": [],
       "question": "Will the Minister confirm whether this is even legal?",
       "status": "responded",
       "verdict": "WILL RAISE IT"
@@ -1820,6 +2118,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "telco we don't listen to your calls campaign",
+      "grounding": [],
       "question": "Can we get a side-by-side comparison out by tomorrow?",
       "status": "responded",
       "verdict": "WOULD POUNCE"
@@ -1849,6 +2149,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "ad cast talent backlash Singapore",
+      "grounding": [],
       "question": "Did the talent know how the tableau would be framed?",
       "status": "responded",
       "verdict": "BACKLASH RISK"
@@ -1878,6 +2180,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_028",
+      "grounding_query": "digital rights petition boycott surveillance Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_028",
+          "source": "Google News SG",
+          "url": "news.google.com",
+          "text": "Support groups warn that always-on call recording can become a surveillance tool against domestic-abuse victims."
+        }
+      ],
       "question": "Will MerlionTel commit to not capturing call content at all?",
       "status": "responded",
       "verdict": "CAMPAIGN INCOMING"
@@ -1906,6 +2217,8 @@
         "where": "whatsapp"
       },
       "evidence_id": null,
+      "grounding_query": "MerlionTel staff morale recording customers",
+      "grounding": [],
       "question": "How do we answer customers who ask if we record them?",
       "status": "responded",
       "verdict": "MORALE / LEAK RISK"
@@ -1935,6 +2248,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_041",
+      "grounding_query": "less spam better deals substantiation consumer Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_041",
+          "source": "CASE note (news)",
+          "url": "news.google.com",
+          "text": "Comparative claims like 'less spam' and 'better deals' require substantiation under advertising guidelines."
+        }
+      ],
       "question": "Where is the evidence for the 'better deals' claim?",
       "status": "responded",
       "verdict": "MISLEADING-CLAIM FLAG"
@@ -1964,6 +2286,15 @@
         "where": "whatsapp"
       },
       "evidence_id": "gp_news_004",
+      "grounding_query": "PDPC complaint opt-out call recording Singapore",
+      "grounding": [
+        {
+          "id": "gp_news_004",
+          "source": "PDPC guidance (news)",
+          "url": "news.google.com",
+          "text": "Processing call content for advertising raises clear PDPA purpose-limitation and consent concerns, lawyers say."
+        }
+      ],
       "question": "Is there an opt-out that is genuinely free and easy?",
       "status": "responded",
       "verdict": "COMPLAINTS LIKELY"
@@ -2196,8 +2527,8 @@
     },
     {
       "sponsor": "Bright Data",
-      "role": "per-agent grounding",
-      "detail": "3 sources, injection-fenced quotes"
+      "role": "per-agent self-grounding",
+      "detail": "29 agents grounded, 6 sources"
     },
     {
       "sponsor": "Daytona",

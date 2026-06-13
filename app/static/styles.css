@@ -594,3 +594,12 @@ body {
   .rv-feed { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 14px; max-height: 240px; }
   .rv-grid { grid-template-columns: repeat(12, 1fr); }
 }
+
+/* ---- per-agent grounding (its own scrape), surfaced in feed + quote card ---- */
+.fi-ground { font-family: var(--font-mono); font-size: 10.5px; color: var(--paper-dim); letter-spacing: 0.02em; margin-top: 5px; opacity: 0.85; }
+.qc-search { font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); letter-spacing: 0.02em; }
+.qc-ground { margin-top: 14px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.qc-ground-h { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper-dim); margin-bottom: 8px; }
+.qc-snippet { display: flex; flex-direction: column; gap: 3px; margin-bottom: 10px; }
+.qc-src { font-family: var(--font-mono); font-size: 11px; color: #7fe0a8; }
+.qc-snip { font-family: var(--font-display); font-style: italic; font-size: 13.5px; color: var(--paper-faint); line-height: 1.4; }
