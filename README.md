@@ -1,327 +1,171 @@
 # 60's Pulse
 
-**See tomorrow's backlash before you launch today.**
+**Pressure-test an ad campaign against 60 AI critics — before the public gets to it.**
 
-60's Pulse is an AI premortem for campaigns, product launches, keynotes, and announcement films.
-Paste a launch or bake a film through the sponsor pipeline, and it simulates a 60-member
-public-and-press reaction panel before the real audience gets to it. The output is not a generic
-sentiment score. It is a launch decision, a blast map, the objections that will spread, and the
-cheapest fix path.
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-server-009688?logo=fastapi&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Hackathon](https://img.shields.io/badge/Agent%20Forge%20AI-Hackathon%202026-ff3355)
 
-The current baked demo is a synthetic Google I/O 2026 "always-on AI" launch premortem. The original
-Singaporean MerlionTel ad-campaign run is preserved as an archived golden artifact.
+Brands launch creative blind, and one wrong line becomes tomorrow's apology tour. **60's Pulse**
+simulates a 60-persona reaction panel — each agent grounded in live public discourse — to flag
+exactly which lines, scenes, or concepts will backfire, then tells you the cheapest fix:
+**rewrite the copy, reshoot the scene, or rethink the concept.**
 
-## The Problem
+Built at the **Agent Forge AI Hackathon** (SMU, June 2026).
 
-Brands usually discover ad backlash after the media cycle starts:
+![60's Pulse dashboard — Blast Score, fictional headline, 60-agent panel, objection clusters, and blast map](assets/dashboard.png)
 
-- The campaign is already live.
-- The apology is already being drafted.
-- The production budget is already sunk.
-- The issue is not always the copy; sometimes it is the casting, the premise, the timing, or the
-  stakeholder who can turn a bad comment into a headline.
+---
 
-Focus groups are slow, expensive, and often too polite. Social listening only works after the
-damage is public. 60's Pulse moves that backlash test to before launch.
+## What it does
 
-## What It Does
+Paste a campaign — copy, a keynote script, an announcement, or a video — and 60's Pulse returns a
+**campaign premortem**, not a sentiment score:
 
-60's Pulse takes a campaign or launch narrative and returns a premortem:
+- **Blast Score** — the share of the panel likely to object strongly enough to go public, boycott,
+  report, or generate negative coverage.
+- **60-agent reaction panel** — personas, concern lenses, and stakeholders react to the same
+  creative; each gives a quote, severity, trigger moment, fix tier, and press-conference question.
+- **Blast map** — for video, it pinpoints *which second* detonates the panel ("0:06 is the shot").
+- **Objection clusters** — reactions grouped by theme (privacy, consent, representation, trust…).
+- **Three-tier fix triage** — every objection tagged by the cheapest intervention that fixes it:
+  **copy**, **production**, or **decision**.
+- **Tomorrow's headline** — a fictional front page showing the likely narrative if it ships unchanged.
 
-1. **Blast Score**
-   The share of the simulated panel likely to object strongly enough to go public, boycott, report,
-   or generate negative coverage.
+The core question shifts from *"is this positive or negative?"* to
+**"what exactly will people attack, who amplifies it, which second caused it, and what's the cheapest fix?"**
 
-2. **60-Agent Reaction Panel**
-   A grid of personas, issue lenses, and stakeholder roles reacting to the same creative. Each
-   response includes a quote, severity, trigger moment, fix tier, and press-conference question.
+## See it in action
 
-3. **Timeline Blast Map**
-   For video campaigns and segmented launch scripts, it identifies which scene or second detonates
-   the panel. This turns "people may dislike it" into "0:12 is the shot that causes the issue."
+The bundled demo stress-tests a **real, publicly announced** keynote — Google's I/O 2026
+"always-on AI" launch — read in its most adversarial light:
 
-4. **Top Objection Clusters**
-   The system groups reactions into categories like privacy, PDPA/consent, representation, pricing,
-   accessibility, child safety, religious sensitivity, or trust.
+> An AI agent that runs *"even while your phone is off,"* connects your Gmail and Photos, and reads
+> your inbox overnight.
 
-5. **Three-Tier Fix Triage**
-   It separates objections by what kind of intervention can actually fix them:
-   - **Copy**: rewrite the line, claim, tagline, or voiceover.
-   - **Production**: cut/recast/reshoot imagery that wording cannot repair.
-   - **Decision**: the concept itself is the risk; this is a launch call, not a copy edit.
-
-6. **Tomorrow's Headline**
-   A fictional front page shows the likely public narrative if the campaign ships unchanged.
-
-## The Core Insight
-
-Most brand-safety tools answer:
-
-> Is this campaign positive or negative?
-
-60's Pulse answers:
-
-> What exactly will people attack, who will amplify it, which second caused it, and what is the
-> cheapest fix before launch?
-
-That is the selling point: **from vibe check to launch decision.**
-
-## Why 60 Agents
-
-The panel is designed for risk coverage, not census polling.
-
-- **35 public personas** capture audience reactions and social-sharing behavior.
-- **15 concern lenses** inspect sensitive risk areas in third person, such as PDPA, accessibility,
-  child data, religious sensitivity, racial representation, privacy, labour, and safety.
-- **10 stakeholder agents** represent the groups that can escalate a problem: journalists,
-  regulators, ad standards, opposition MPs, competitor PR, employees, activist groups, and consumer
-  associations.
-
-Identity-sensitive perspectives are not roleplayed in first person. They are handled as third-person
-concern lenses, which is safer and more defensible.
-
-## Demo Story
-
-The current baked demo uses a synthetic Google I/O 2026-style launch scenario:
-
-> Google announces an always-on AI stack: Gemini Spark works in the background even while the phone
-> is off, Personal Intelligence connects Gmail and Photos, Daily Brief reads inbox/calendar/tasks
-> overnight, agents operate 24/7, and SynthID watermarks outputs.
-
-60's Pulse catches three different failure modes:
-
-- **Copy risk**: convenience language reads like a euphemism for continuous monitoring.
-- **Production risk**: the keynote framing makes "always on" feel like a feature, not a risk.
-- **Decision risk**: off-device background agents connected to personal accounts may be
-  fundamentally hard to sell as a trust story.
-
-The current `golden/golden_run.json` fixture returns:
+60's Pulse returns **Blast Score 86 → verdict: DELAY**, with the panel splitting on privacy (48%),
+trust/claims (45%), and surveillance. It then shows the fix path:
 
 ```text
-Blast Score 86
-Decision DELAY
-58 responders / 60 agents
-Peak moment 0:06-0:12
-Top clusters: Privacy, Trust / Claims, Data Ethics, Surveillance, Safety
+86  As presented
+ │   rewrite the "always-on" lines              (copy)
+76  ▼
+ │   make every connection opt-in, off by default (production)
+38  ▼
+38  The always-on autonomous-agent premise itself — not a settings toggle. Your call.  (decision)
 ```
 
-The archived MerlionTel ad-campaign run is still available in `golden/golden_merliontel.json` and
-`golden/golden_live.json`. It demonstrates the original Singapore telco story: privacy panic,
-CMIO representation risk, and a residual surveillance-premise decision.
+That final **38 is the client decision**: 60's Pulse doesn't pretend copy can save a premise.
 
-## Product Differentiators
+> All reactions are synthetic and the masthead is fictional. The demo is an illustrative analysis of
+> publicly announced features — not a prediction, endorsement, or accusation about any company.
 
-### It Is Creative-Specific
+## How it works
 
-The output is tied to campaign scenes, lines, and moments. It does not just say "privacy risk";
-it points to the line or shot that causes the reaction.
-
-### It Is Fix-Oriented
-
-Every objection is tagged by the cheapest fix tier. This makes the output useful to marketers,
-creatives, legal, and leadership in the same meeting.
-
-### It Models Escalation
-
-The panel includes not only consumers, but also the people who turn backlash into consequences:
-press, regulators, opposition voices, competitors, staff, and advocacy groups.
-
-### It Is Demo-Safe
-
-The live-capable system bakes a golden run offline. The stage demo replays a single JSON artifact,
-so the presentation does not depend on Wi-Fi, sponsor latency, or 60 live calls.
-
-### It Uses Sponsors With A Clear Role
-
-- **Kimi / Moonshot**: 60-agent structured reaction panel, with JSON mode and prefix-cache-friendly
-  shared prompts.
-- **Bright Data**: per-agent public-discourse grounding hooks.
-- **Daytona**: optional sandbox isolation and agent execution receipts.
-- **VideoDB**: optional video transcript, scene extraction, and creative manifest ingestion.
-- **SenseNova**: fictional scandal-front-page image concept in the sponsor trace.
-
-Each sponsor maps to a production concern: reasoning, grounding, isolation, video understanding,
-and future-artifact generation.
-
-## What The User Gets
-
-The final dashboard is a war-room broadsheet:
-
-- a giant Blast Score,
-- the fake tomorrow headline,
-- the 60-agent panel,
-- top objection clusters,
-- a timeline blast map,
-- stakeholder escalation badges,
-- and a fix triage showing what to rewrite, reshoot, or cancel.
-
-It is built for the meeting where a brand asks:
-
-> Should we launch this?
-
-## Current Demo Surface
-
-The repository currently supports:
-
-- a FastAPI app that serves the input screen, agent-run animation, and final dashboard,
-- a baked Google I/O 2026 golden run at `golden/golden_run.json`,
-- archived MerlionTel golden runs in `golden/golden_merliontel.json` and `golden/golden_live.json`,
-- a text-only live campaign path through `POST /api/analyze`,
-- a fixture/live bake script for regenerating golden artifacts,
-- Kimi/Moonshot or OpenAI-compatible panel generation,
-- optional Daytona sandbox receipts through the bake CLI,
-- optional VideoDB creative ingest through the bake CLI,
-- Bright Data grounding hooks; live response parsers are still stubbed until zones and payload
-  shapes are finalized.
-
-The dashboard intentionally renders one JSON object. That keeps the product story simple: live work
-produces the premortem artifact; the user-facing surface explains the decision.
-
-Browser image/video attachments are currently presentation chips only. The implemented browser live
-path sends `campaign` and `brand` text to `/api/analyze`. Real video ingestion happens through
-`bake.py --video-source`.
-
-## Repository Map
-
-```text
-app/main.py                 FastAPI app, /api/golden, /api/analyze, static mount
-app/analyze.py              typed-campaign live analysis path
-app/pipeline.py             reaction reduction into Blast Score, clusters, timeline
-app/sponsors/               Kimi, Bright Data, Daytona, and VideoDB adapters
-app/static/                 input flow, run animation, and dashboard UI
-golden/golden_run.json      current default Google fixture rendered by the app
-golden/golden_merliontel.json
-                              archived MerlionTel run
-bake.py                     fixture/live bake CLI
-seed_io2026.py              reseeds the Google I/O 2026 fixture
-decks/premortem-pitch/      hackathon pitch deck HTML slides and previews
+```
+campaign (text / image / video)
+        │
+        ▼
+  VideoDB      ── frame-by-frame parse → scenes + transcript + creative manifest
+        │
+        ▼
+  Kimi         ── orchestrates 60 agents in parallel, each producing a structured reaction
+   + Daytona   ── each agent sandboxed in secure isolation
+   + Bright Data ── each persona grounded in real-time Reddit & Google News discourse
+        │
+        ▼
+  scoring      ── Blast Score, objection clusters, blast map, three-tier fix triage
+        │
+        ▼
+  dashboard    ── a single war-room broadsheet (FastAPI + static front end)
 ```
 
-## API Surface
+To stay demo-safe on stage, a full run is **baked offline** into one JSON artifact
+(`demo/golden_run.json`); the dashboard replays it, so the presentation never depends on Wi-Fi,
+sponsor latency, or 60 live calls.
 
-```text
-GET  /healthz       app health check
-GET  /api/golden    returns the current baked golden artifact
-POST /api/analyze   regenerates a 60-agent panel for pasted campaign text
-```
+## Tech stack
 
-`POST /api/analyze` accepts:
+| Tool | Role |
+|------|------|
+| **Kimi (Moonshot AI)** | Orchestrates all 60 agents in parallel; structured reaction panel. |
+| **Bright Data** | Grounds each persona in real-time public discourse (Reddit, Google News). |
+| **Daytona** | Sandboxes each agent in secure isolation, with execution receipts. |
+| **VideoDB** | Frame-by-frame video parsing → scenes, transcript, creative manifest. |
 
-```json
-{
-  "brand": "Google",
-  "campaign": "Launch copy, keynote excerpt, or announcement text",
-  "provider": "kimi"
-}
-```
+Backend is **FastAPI** + a static dashboard. An OpenAI-compatible provider is supported as a cheap
+dev fallback for the panel.
 
-## Run It
+## Why 60 agents
 
-Create an environment and install dependencies:
+The panel is designed for **risk coverage**, not census polling:
+
+- **35 public personas** — consumer reactions and social-sharing behavior.
+- **15 concern lenses** — sensitive risk areas inspected in third person (consent, accessibility,
+  child data, religious sensitivity, representation, low-income impact).
+- **10 stakeholder agents** — the groups that turn a bad comment into consequences: journalists,
+  regulators, ad-standards bodies, competitors, employees, and advocacy groups.
+
+Identity-sensitive perspectives are handled as third-person concern lenses, not first-person
+roleplay — which is safer and more defensible.
+
+## Quickstart
+
+No API keys required — fixture mode runs the baked demo entirely offline.
 
 ```bash
-python -m venv .venv
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-```
-
-Start the app:
-
-```bash
 uvicorn app.main:app --reload
+# open http://127.0.0.1:8000
 ```
 
-Open:
-
-```text
-http://127.0.0.1:8000
-```
-
-Run the tests:
-
-```bash
-python -m unittest discover -s tests
-```
-
-Run the no-network fixture smoke. With `--mini`, the script recomputes the artifact but does not
-write `golden/golden_run.json`:
+Run the no-network smoke test:
 
 ```bash
 python bake.py --mode fixture --mini 2
 ```
 
-Run a cheap live smoke:
+## Live mode
+
+Live mode regenerates the 60 reactions through the sponsor stack. Copy `.env.example` to `.env` and
+fill the keys for the path you want — fixture mode needs none of them.
 
 ```bash
-python bake.py --mode live --mini 6
+python bake.py --mode live --mini 6                               # cheap live smoke (6 agents)
+python bake.py --mode live                                        # full 60-agent live bake
+python bake.py --mode live --mini 3 --sandbox daytona --sandbox-mini 3   # + Daytona receipts
+python bake.py --mode live --video-source "https://…/ad.mp4" --mini 6    # + VideoDB ingest
 ```
 
-Run live with the OpenAI-compatible dev provider:
+| Variable | Used by |
+|----------|---------|
+| `KIMI_API_KEY`, `KIMI_BASE_URL`, `KIMI_MODEL` | 60-agent panel |
+| `BRIGHTDATA_API_KEY`, `BRIGHTDATA_SERP_ZONE`, `BRIGHTDATA_UNLOCKER_ZONE` | persona grounding |
+| `DAYTONA_API_KEY`, `DAYTONA_API_URL` | agent sandboxing |
+| `VIDEODB_API_KEY` | video ingest |
+| `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_MODEL` | optional dev provider |
 
-```bash
-python bake.py --mode live --provider openai --mini 6
-```
+## Project status
 
-Attach Daytona sandbox receipts:
+This is a hackathon project. What's live today:
 
-```bash
-python bake.py --mode live --mini 3 --sandbox daytona --sandbox-mini 3
-```
+- ✅ Static war-room dashboard served by FastAPI
+- ✅ Baked golden run + live/fixture bake script
+- ✅ Kimi (or OpenAI-compatible) 60-agent panel generation
+- ✅ Live typed-campaign path via `POST /api/analyze`
+- ✅ Optional Daytona sandbox receipts and VideoDB creative ingest
+- 🚧 Bright Data grounding hooks wired; per-source parsing still being hardened
 
-Ingest a video through VideoDB:
+## Team
 
-```bash
-python bake.py --mode live --video-source "https://example.com/ad.mp4" --mini 6
-```
+Built at the Agent Forge AI Hackathon 2026 by:
 
-Reseed the current Google fixture:
+- **Denise Lie** ([@deniseLie](https://github.com/deniseLie))
+- **Kim Yungju** ([@kimyungju](https://github.com/kimyungju))
+- **Huan Yuhan** ([btzzcold](https://github.com/btzzcold))
+- **Hor Xiang Zhi** ([@clouery](https://github.com/clouery))
 
-```bash
-python seed_io2026.py
-python bake.py --mode fixture
-```
+## License
 
-Regenerate the original MerlionTel fixture:
-
-```bash
-python golden/build_golden.py
-```
-
-## Environment
-
-Fixture mode needs no keys. Live mode uses the keys relevant to the provider path:
-
-```env
-KIMI_API_KEY=
-KIMI_BASE_URL=https://api.moonshot.ai/v1
-KIMI_MODEL=moonshot-v1-8k
-KIMI_CONCURRENCY=16
-KIMI_MAX_TOKENS=400
-
-OPENAI_API_KEY=
-OPENAI_BASE_URL=https://api.openai.com/v1
-OPENAI_MODEL=gpt-4o-mini
-
-BRIGHTDATA_API_KEY=
-BRIGHTDATA_SERP_ZONE=
-BRIGHTDATA_UNLOCKER_ZONE=
-
-DAYTONA_API_KEY=
-DAYTONA_API_URL=https://app.daytona.io/api
-
-VIDEODB_API_KEY=
-
-SENSENOVA_API_KEY=
-TERMINAL3_API_KEY=
-
-PREMORTEM_MODE=fixture
-PYTHONIOENCODING=utf-8
-```
-
-Copy `.env.example` to `.env` when running live paths.
-
-## One-Line Pitch
-
-**60's Pulse is a launch premortem that shows the backlash, the blast moment, and the fix path
-before the campaign becomes tomorrow's apology.**
+[MIT](LICENSE) © 2026 60's Pulse contributors.
