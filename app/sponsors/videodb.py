@@ -150,7 +150,12 @@ def _iter(value):
         return []
     if isinstance(value, dict):
         for key in ("scenes", "items", "data"):
-            if key in value:
-                return value[key]
-        return value.values()
-    return value
+            nested = value.get(key)
+            if nested is not None:
+                return _iter(nested)
+        return []
+    if isinstance(value, (str, bytes)):
+        return []
+    if isinstance(value, Iterable):
+        return value
+    return []

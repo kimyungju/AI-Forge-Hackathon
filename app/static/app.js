@@ -8,7 +8,6 @@ function el(tag, attrs = {}, ...kids) {
   for (const [k, v] of Object.entries(attrs)) {
     if (v == null) continue;
     if (k === "class") n.className = v;
-    else if (k === "html") n.innerHTML = v;
     else if (k === "style") n.style.cssText = v;
     else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
     else n.setAttribute(k, v);
@@ -93,18 +92,27 @@ function countUp(node, to, ms = 1100) {
 }
 
 // ---- sections --------------------------------------------------------------
+let quoteReturnFocus = null;
+
 function renderMasthead(d) {
   $("outlet").textContent = d.headline.masthead;
   const a = d.aggregate;
   $("masthead-meta").replaceChildren(
     el("span", {}, el("b", {}, d.scenario.brand), " " + d.scenario.category),
-    el("span", { html: `<b>${a.panel_size}</b> agents` }),
-    el("span", { html: `<b>${a.abstained}</b> abstained` }),
-    el("span", { html: `grounded <b>${d.scenario.date}</b>` }),
+    el("span", {}, el("b", {}, a.panel_size), " agents"),
+    el("span", {}, el("b", {}, a.abstained), " abstained"),
+    el("span", {}, "grounded ", el("b", {}, d.scenario.date)),
   );
-  const parts = d.sponsor_trace.map((s) => `<b>${s.sponsor}</b> ${s.detail}`);
-  const line = parts.join('<span class="dot">&bull;</span>');
-  $("ticker").innerHTML = line + '<span class="dot">&bull;</span>' + line + '<span class="dot">&bull;</span>';
+  const track = $("ticker");
+  track.replaceChildren();
+  for (let pass = 0; pass < 2; pass++) {
+    for (const sponsor of d.sponsor_trace) {
+      track.append(
+        el("span", {}, el("b", {}, sponsor.sponsor), " " + sponsor.detail),
+        el("span", { class: "dot" }, "•"),
+      );
+    }
+  }
 }
 
 function renderBlast(d) {
@@ -222,10 +230,13 @@ function renderPanel(d) {
   grid.replaceChildren();
   d.reactions.forEach((r, i) => {
     const abst = r.status === "abstain";
-    const tile = el("div", {
+    const tile = el("button", {
       class: `tile agent-avatar ${r.kind} ${abst ? "abstain" : "sev" + r.severity}`,
+      type: "button",
       style: `--i:${i};${agentVars(r, i)}`,
       title: `${r.label}${abst ? " (abstained)" : ""}`,
+      "aria-label": `${r.label}${abst ? " abstained" : ": open reaction"}`,
+      disabled: abst ? "disabled" : null,
       onclick: () => !abst && openQuote(r),
     }, agentFace(r));
     grid.append(tile);
@@ -270,7 +281,12 @@ function renderTimeline(d) {
   tl.forEach((t) => {
     const isPeak = t.scene_id === d.aggregate.peak.scene_id;
     const bar = el("div", { class: "bar", style: `background:${heatPct(t.pct / 80)}` });
-    const col = el("div", { class: "tl-bar" + (isPeak ? " peak" : ""), onclick: () => readout(d, t) },
+    const col = el("button", {
+      class: "tl-bar" + (isPeak ? " peak" : ""),
+      type: "button",
+      "aria-label": `${fmtT(t.t_start)} to ${fmtT(t.t_end)} triggered ${t.pct}% of the panel`,
+      onclick: () => readout(d, t),
+    },
       isPeak ? el("div", { class: "peak-tag" }, "PEAK") : null,
       el("div", { class: "pct" }, t.pct + "%"),
       bar,
@@ -282,9 +298,14 @@ function renderTimeline(d) {
   readout(d, tl.find((t) => t.scene_id === d.aggregate.peak.scene_id));
 }
 function readout(d, t) {
-  $("timeline-readout").innerHTML =
-    `<b>${fmtT(t.t_start)}–${fmtT(t.t_end)} · ${t.pct}%</b> of the panel triggered here.<br>` +
-    `<span class="q">“${t.transcript}”</span><br>${t.visual_desc}`;
+  $("timeline-readout").replaceChildren(
+    el("b", {}, `${fmtT(t.t_start)}–${fmtT(t.t_end)} · ${t.pct}%`),
+    " of the panel triggered here.",
+    el("br"),
+    el("span", { class: "q" }, `“${t.transcript}”`),
+    el("br"),
+    t.visual_desc || "",
+  );
 }
 
 function renderStakeholders(d) {
@@ -339,6 +360,7 @@ function renderFix(d) {
 function openQuote(r) {
   const kindLabel = { persona: "Persona · first person", lens: "Concern lens · third person", stakeholder: "Stakeholder" }[r.kind];
   const grounded = r.grounding && r.grounding.length;
+  quoteReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   $("qc-body").replaceChildren(
     avatar(r, 46),
     el("div", { class: "qc-role" }, `${r.label} — ${kindLabel}`),
@@ -356,9 +378,66 @@ function openQuote(r) {
         : el("span", { class: "evi spec" }, "model speculation — no evidence found for this objection")),
     el("div", { class: "qc-q" }, el("b", {}, "Press-conference question: "), r.question),
   );
-  $("quote-card").classList.remove("hidden");
+  const card = $("quote-card");
+  card.hidden = false;
+  card.classList.remove("hidden");
+  card.setAttribute("aria-hidden", "false");
+  $("qc-close").focus();
+  setViewsInert(true);
 }
-function closeQuote() { $("quote-card").classList.add("hidden"); }
+function closeQuote() {
+  const card = $("quote-card");
+  if (card.hidden) return;
+  const returnTarget =
+    quoteReturnFocus && document.contains(quoteReturnFocus) ? quoteReturnFocus : null;
+  setViewsInert(false);
+  restoreQuoteFocus(returnTarget);
+  if (card.contains(document.activeElement) && document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+  card.classList.add("hidden");
+  card.setAttribute("aria-hidden", "true");
+  card.hidden = true;
+  restoreQuoteFocus(returnTarget);
+  quoteReturnFocus = null;
+}
+function restoreQuoteFocus(target) {
+  if (!target || !document.contains(target)) return;
+  target.focus();
+  requestAnimationFrame(() => {
+    if (document.contains(target)) target.focus();
+  });
+}
+function setViewsInert(enabled) {
+  for (const view of document.querySelectorAll(".view")) {
+    view.inert = enabled;
+    if (enabled) view.setAttribute("aria-hidden", "true");
+    else view.removeAttribute("aria-hidden");
+  }
+}
+function focusableQuoteElements() {
+  return Array.from($("quote-card").querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"))
+    .filter((node) => !node.disabled && !node.hidden);
+}
+function trapQuoteFocus(e) {
+  const card = $("quote-card");
+  if (card.hidden || e.key !== "Tab") return;
+  const focusable = focusableQuoteElements();
+  if (!focusable.length) {
+    e.preventDefault();
+    card.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
 
 // ---- views -----------------------------------------------------------------
 function showView(id) {
@@ -378,10 +457,11 @@ function setupInput() {
       el("span", { class: "chip " + a.kind },
         a.kind === "image" && a.url !== "#"
           ? el("img", { class: "chip-thumb", src: a.url, alt: "" })
-          : el("span", { class: "chip-ico" }, a.kind === "video" ? "🎬" : "🖼"),
+          : el("span", { class: "chip-ico" }, a.kind === "video" ? "VID" : "IMG"),
         el("span", { class: "chip-name" }, a.name),
         el("button", {
           class: "chip-x", type: "button",
+          "aria-label": "Remove " + a.name,
           onclick: () => { attachments.splice(i, 1); renderChips(); refresh(); },
         }, "×"))));
   }
@@ -568,7 +648,10 @@ function renderDashboard(d) {
 function boot() {
   $("qc-close").addEventListener("click", closeQuote);
   $("quote-card").addEventListener("click", (e) => { if (e.target.id === "quote-card") closeQuote(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeQuote(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeQuote();
+    trapQuoteFocus(e);
+  });
 
   const skip = $("skip-btn");
   if (skip) skip.addEventListener("click", () => { if (DATA) showDashboard(DATA); });

@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import time
 from dataclasses import dataclass
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,11 +30,7 @@ def attach_receipts(agents, mode="fixture", enabled=False, limit=0, keep=False):
     from daytona_sdk import Daytona
 
     daytona = Daytona()
-    params_cls = getattr(
-        daytona_sdk,
-        "CreateSandboxParams",
-        getattr(daytona_sdk, "CreateSandboxBaseParams"),
-    )
+    params_cls = _resolve_params_class(daytona_sdk)
     selected = copied[:limit] if limit else copied
     receipts = []
     for agent in selected:
@@ -55,8 +55,19 @@ def attach_receipts(agents, mode="fixture", enabled=False, limit=0, keep=False):
             receipts.append(agent["sandbox_receipt"])
         finally:
             if not keep:
-                daytona.delete(sandbox)
+                try:
+                    daytona.delete(sandbox)
+                except Exception:  # noqa: BROAD_EXCEPT_OK
+                    LOGGER.warning("failed to delete Daytona sandbox %s", _sandbox_id(sandbox), exc_info=True)
     return copied, receipts
+
+
+def _resolve_params_class(daytona_sdk):
+    for name in ("CreateSandboxParams", "CreateSandboxBaseParams"):
+        params_cls = getattr(daytona_sdk, name, None)
+        if params_cls is not None:
+            return params_cls
+    raise RuntimeError("Daytona SDK must expose CreateSandboxParams or CreateSandboxBaseParams")
 
 
 def _create_sandbox(daytona, params_cls, agent):
@@ -64,11 +75,23 @@ def _create_sandbox(daytona, params_cls, agent):
         "PREMORTEM_AGENT_ID": agent["agent_id"],
         "PREMORTEM_AGENT_KIND": agent["kind"],
     }
-    try:
-        params = params_cls(language="python", env_vars=env_vars, auto_stop_interval=10)
-        return daytona.create(params)
-    except TypeError:
-        return daytona.create()
+    params = _create_params(params_cls, env_vars)
+    return daytona.create(params)
+
+
+def _create_params(params_cls, env_vars):
+    attempts = (
+        {"language": "python", "env_vars": env_vars, "auto_stop_interval": 10},
+        {"language": "python", "env_vars": env_vars},
+        {"env_vars": env_vars},
+    )
+    last_error = None
+    for kwargs in attempts:
+        try:
+            return params_cls(**kwargs)
+        except TypeError as exc:
+            last_error = exc
+    raise RuntimeError("Daytona SDK params class does not support sandbox env_vars") from last_error
 
 
 def _receipt_probe(agent):

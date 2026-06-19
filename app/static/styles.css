@@ -125,6 +125,7 @@ html, body {
   font-family: var(--font-mono); font-weight: 600; font-size: clamp(8px, 0.95vw, 11px); letter-spacing: 0.01em;
   cursor: pointer; position: relative; color: var(--agent-text);
   border: 1px solid rgba(26,22,16,0.14); background: var(--agent-heat);
+  padding: 0;
   overflow: hidden; isolation: isolate;
   opacity: 0; transform: scale(0.6);
   animation: ignite 0.42s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--i) * 22ms);
@@ -237,7 +238,20 @@ html, body {
 .tile.lens { border-radius: 22%; }
 .tile.stakeholder { border-radius: 3px; }
 .tile.abstain { opacity: 0.6 !important; border-style: dashed; filter: saturate(0.35); }
-.tile:hover { transform: scale(1.2); z-index: 3; box-shadow: 0 10px 24px rgba(26,22,16,0.3), inset 0 1px 0 rgba(255,255,255,0.45); outline: 1px solid var(--ink); filter: saturate(1.08); }
+.tile:disabled { cursor: default; }
+.tile:not(:disabled):hover { transform: scale(1.2); z-index: 3; box-shadow: 0 10px 24px rgba(26,22,16,0.3), inset 0 1px 0 rgba(255,255,255,0.45); outline: 1px solid var(--ink); filter: saturate(1.08); }
+.tile:focus-visible,
+.tl-bar:focus-visible,
+.tool:focus-visible,
+.chip-x:focus-visible,
+.preset:focus-visible,
+.run-btn:focus-visible,
+.skip-btn:focus-visible,
+.verdict-btn:focus-visible,
+.qc-close:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
 
 .panel-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
 .panel-legend .lg { display: flex; align-items: center; gap: 6px; }
@@ -260,7 +274,7 @@ html, body {
 
 /* timeline blast map */
 .timeline { display: flex; align-items: flex-end; gap: 7px; height: 168px; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
-.tl-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; cursor: pointer; position: relative; }
+.tl-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; cursor: pointer; position: relative; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; }
 .tl-bar .bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 4px; height: 0; transition: height 0.9s cubic-bezier(.2,.7,.2,1); }
 .tl-bar .peak-tag { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 1px; }
 .tl-bar .pct { font-family: var(--font-mono); font-size: 11px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }

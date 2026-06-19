@@ -82,7 +82,7 @@ campaign (text / image / video)
 ```
 
 To stay demo-safe on stage, a full run is **baked offline** into one JSON artifact
-(`demo/golden_run.json`); the dashboard replays it, so the presentation never depends on Wi-Fi,
+(`golden/golden_run.json`); the dashboard replays it, so the presentation never depends on Wi-Fi,
 sponsor latency, or 60 live calls.
 
 ## Tech stack
@@ -118,6 +118,15 @@ No API keys required — fixture mode runs the baked demo entirely offline.
 python -m pip install -r requirements.txt
 uvicorn app.main:app --reload
 # open http://127.0.0.1:8000
+```
+
+Static demo smoke checks:
+
+```bash
+curl http://127.0.0.1:8000/healthz
+curl -I http://127.0.0.1:8000/
+curl -I http://127.0.0.1:8000/app.js
+curl -I http://127.0.0.1:8000/styles.css
 ```
 
 Run the no-network smoke test:
