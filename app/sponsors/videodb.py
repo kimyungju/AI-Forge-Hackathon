@@ -33,7 +33,7 @@ def ingest_creative(source, existing_manifest, scenario, mode="fixture"):
         extraction_type=SceneExtractionType.shot_based,
         extraction_config={"threshold": 20, "frame_count": 1},
     )
-    raw_scenes = video.get_scene_index(scene_collection.scene_index_id)
+    raw_scenes = _scene_source(video, scene_collection)
     manifest = _normalize_scenes(video, raw_scenes)
     if not manifest:
         manifest = _transcript_manifest(video)
@@ -123,8 +123,30 @@ def _keyframe_ref(video, scene, idx):
     frame = _first_attr(scene, ("frame_url", "thumbnail_url", "url", "image_url"), "")
     if frame:
         return str(frame)
+    frame_url = _first_frame_url(scene)
+    if frame_url:
+        return frame_url
     vid = _first_attr(video, ("id", "video_id"), "unknown")
     return f"videodb://{vid}/scene/{idx}"
+
+
+def _scene_source(video, scene_collection):
+    scenes = _first_attr(scene_collection, ("scenes",), None)
+    if scenes is not None:
+        return scenes
+    scene_index_id = _first_attr(scene_collection, ("scene_index_id",), None)
+    if scene_index_id is not None:
+        return video.get_scene_index(scene_index_id)
+    return []
+
+
+def _first_frame_url(scene):
+    frames = _first_attr(scene, ("frames",), [])
+    for frame in _iter(frames):
+        url = _first_attr(frame, ("url", "frame_url", "thumbnail_url", "image_url"), "")
+        if url:
+            return str(url)
+    return ""
 
 
 def _number_attr(item, names, fallback):
