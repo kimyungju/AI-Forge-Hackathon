@@ -1,8 +1,8 @@
-import asyncio
 import json
 from pathlib import Path
 import subprocess
 
+import anyio
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -46,6 +46,10 @@ def test_api_golden_serves_the_configured_fixture() -> None:
     assert response.status_code == 200
     assert response.json()["run_id"] == fixture["run_id"]
     assert response.json()["aggregate"]["blast_score"] == fixture["aggregate"]["blast_score"]
+    assert response.json()["aggregate"]["panel_size"] == 60
+    assert response.json()["aggregate"]["responders"] == 60
+    assert response.json()["aggregate"]["abstained"] == 0
+    assert {r["status"] for r in response.json()["reactions"]} == {"responded"}
 
 
 def test_readme_mentions_the_golden_fixture_path() -> None:
@@ -147,15 +151,14 @@ def test_analyze_fixture_mode_returns_grounding_receipt_trace() -> None:
     golden = json.loads((ROOT / "golden" / "golden_run.json").read_text(encoding="utf-8"))
 
     # When
-    result = asyncio.run(
-        analyze(
-            AnalyzeInput(
-                campaign="Launch copy for a privacy-sensitive telco feature.",
-                brand="AcmeTel",
-                golden=golden,
-            ),
-            AnalyzeOptions(mode="fixture", provider="kimi", brightdata=True),
-        )
+    result = anyio.run(
+        analyze,
+        AnalyzeInput(
+            campaign="Launch copy for a privacy-sensitive telco feature.",
+            brand="AcmeTel",
+            golden=golden,
+        ),
+        AnalyzeOptions(mode="fixture", provider="kimi", brightdata=True),
     )
 
     # Then

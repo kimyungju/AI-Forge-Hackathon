@@ -100,7 +100,7 @@ function renderMasthead(d) {
   $("masthead-meta").replaceChildren(
     el("span", {}, el("b", {}, d.scenario.brand), " " + d.scenario.category),
     el("span", {}, el("b", {}, a.panel_size), " agents"),
-    el("span", {}, el("b", {}, a.abstained), " abstained"),
+    ...(a.abstained ? [el("span", {}, el("b", {}, a.abstained), " abstained")] : []),
     el("span", {}, "grounded ", el("b", {}, d.scenario.date)),
   );
   const track = $("ticker");
@@ -118,7 +118,7 @@ function renderMasthead(d) {
 function renderBlast(d) {
   const a = d.aggregate;
   $("blast-band").textContent = `${a.stability}  ·  ${a.severe_count} of ${a.responders} severe`;
-  $("panel-count").textContent = `${a.responders} responded · ${a.abstained} abstained`;
+  $("panel-count").textContent = a.abstained ? `${a.responders} responded · ${a.abstained} abstained` : `${a.responders} responded`;
   const chip = $("decision-chip");
   chip.textContent = a.decision;
   chip.className = "decision-chip " + a.decision.toLowerCase();
@@ -609,7 +609,7 @@ function playSwarm(d) {
 }
 
 function finishSwarm(d) {
-  $("rv-status").textContent = `Verdict ready · ${d.aggregate.abstained} abstained`;
+  $("rv-status").textContent = d.aggregate.abstained ? `Verdict ready · ${d.aggregate.abstained} abstained` : "Verdict ready";
   $("rv-count").textContent = `${d.aggregate.responders} responded / ${d.aggregate.panel_size} agents`;
   $("rv-blast").textContent = d.aggregate.blast_score;
   $("verdict-btn").classList.remove("hidden");

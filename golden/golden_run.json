@@ -513,7 +513,7 @@
       "grounding_query": "gemini omni youtube shorts remix synthid creators reaction",
       "grounding": [],
       "question": "When I 'reference anything', whose rights am I using — and whose am I giving up?",
-      "status": "abstain",
+      "status": "responded",
       "verdict": null
     },
     {
@@ -1227,7 +1227,7 @@
       "grounding_query": "google daily brief gemini app everyday users convenience",
       "grounding": [],
       "question": "Is the daily brief actually free, or am I paying with the inbox access?",
-      "status": "abstain",
+      "status": "responded",
       "verdict": null
     },
     {
@@ -2327,18 +2327,18 @@
     }
   ],
   "aggregate": {
-    "blast_score": 86,
-    "responders": 58,
+    "blast_score": 83,
+    "responders": 60,
     "severe_count": 50,
     "panel_size": 60,
-    "abstained": 2,
-    "stability": "86 ± 3",
+    "abstained": 0,
+    "stability": "83 ± 3",
     "decision": "DELAY",
     "clusters": [
       {
         "category": "privacy",
         "label": "PRIVACY",
-        "count": 28,
+        "count": 29,
         "pct": 48,
         "pull_quote": "'Runs even while your phone is off' is a confession, not a feature — it means it never runs on my device and never stops running on theirs.",
         "evidence": true
@@ -2346,7 +2346,7 @@
       {
         "category": "trust",
         "label": "TRUST / CLAIMS",
-        "count": 26,
+        "count": 27,
         "pct": 45,
         "pull_quote": "Convenience marketed over consent, with the invasive settings on by default, is the consumer-harm pattern we exist to push back on.",
         "evidence": true
@@ -2354,7 +2354,7 @@
       {
         "category": "data_ethics",
         "label": "DATA ETHICS",
-        "count": 23,
+        "count": 24,
         "pct": 40,
         "pull_quote": "'Runs even while your phone is off' is a confession, not a feature — it means it never runs on my device and never stops running on theirs.",
         "evidence": true
@@ -2363,7 +2363,7 @@
         "category": "surveillance",
         "label": "SURVEILLANCE",
         "count": 19,
-        "pct": 33,
+        "pct": 32,
         "pull_quote": "'Runs even while your phone is off' is a confession, not a feature — it means it never runs on my device and never stops running on theirs.",
         "evidence": true
       },
@@ -2371,7 +2371,7 @@
         "category": "safety",
         "label": "SAFETY",
         "count": 14,
-        "pct": 24,
+        "pct": 23,
         "pull_quote": "An assistant that reads everything overnight is on the family phone my kid borrows — whose data is it learning from?",
         "evidence": true
       }
@@ -2381,8 +2381,8 @@
         "scene_id": "s00",
         "t_start": 0,
         "t_end": 6,
-        "count": 8,
-        "pct": 14,
+        "count": 9,
+        "pct": 15,
         "visual_desc": "Gemini Omni reveal: 'create anything from any input'.",
         "transcript": "Gemini Omni can create anything from any input — starting with video."
       },
@@ -2391,7 +2391,7 @@
         "t_start": 6,
         "t_end": 12,
         "count": 26,
-        "pct": 45,
+        "pct": 43,
         "visual_desc": "Gemini Spark, the 24/7 personal agent, shown running with the phone powered down.",
         "transcript": "Spark works in the background on your phone or laptop even while they're turned off."
       },
@@ -2400,7 +2400,7 @@
         "t_start": 12,
         "t_end": 18,
         "count": 23,
-        "pct": 40,
+        "pct": 38,
         "visual_desc": "Personal Intelligence: 'connect your life' — Gmail, Photos, soon Calendar.",
         "transcript": "Securely connect apps like Gmail and Google Photos, and soon Google Calendar."
       },
@@ -2408,8 +2408,8 @@
         "scene_id": "s18",
         "t_start": 18,
         "t_end": 24,
-        "count": 21,
-        "pct": 36,
+        "count": 22,
+        "pct": 37,
         "visual_desc": "Daily Brief: Gemini works overnight, analysing your inbox, calendar and tasks.",
         "transcript": "Gemini works overnight for you, analysing your inbox, calendar and tasks."
       },
@@ -2418,7 +2418,7 @@
         "t_start": 24,
         "t_end": 30,
         "count": 22,
-        "pct": 38,
+        "pct": 37,
         "visual_desc": "Information agents + Universal Cart operating in the background 24/7.",
         "transcript": "Your agents operate in the background 24/7 and look across everything on the web."
       },
@@ -2426,8 +2426,8 @@
         "scene_id": "s30",
         "t_start": 30,
         "t_end": 36,
-        "count": 6,
-        "pct": 10,
+        "count": 7,
+        "pct": 12,
         "visual_desc": "SynthID: imperceptible watermarks, verification expanding to Search and Chrome.",
         "transcript": "Every output carries an imperceptible SynthID watermark, now expanding to Search and Chrome."
       }
@@ -2437,7 +2437,7 @@
       "t_start": 6,
       "t_end": 12,
       "count": 26,
-      "pct": 45,
+      "pct": 43,
       "visual_desc": "Gemini Spark, the 24/7 personal agent, shown running with the phone powered down.",
       "transcript": "Spark works in the background on your phone or laptop even while they're turned off."
     }
@@ -2447,13 +2447,13 @@
       {
         "id": "baseline",
         "label": "As presented",
-        "score": 86,
+        "score": 83,
         "detail": "The I/O keynote as delivered on stage."
       },
       {
         "id": "copy",
         "label": "Rewrite the 'always-on' lines",
-        "score": 76,
+        "score": 73,
         "tier": "copy",
         "before": "Spark works in the background on your phone or laptop even while they're turned off.",
         "after": "Spark only acts when you open it and approve each task — nothing runs in the background.",
@@ -2462,13 +2462,13 @@
       {
         "id": "production",
         "label": "Make every connection opt-in, off by default",
-        "score": 38,
+        "score": 37,
         "tier": "production",
         "detail": "Off-by-default, per-account, revocable connections with a visible kill switch clear the consent and GDPR clusters. Unfixable by wording alone."
       }
     ],
     "residual": {
-      "score": 38,
+      "score": 37,
       "tier": "decision",
       "label": "The always-on autonomous-agent premise itself — an AI acting for you 24/7 across your inbox, photos and the web. Not a settings toggle. Your call."
     }

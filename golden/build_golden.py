@@ -1,3 +1,4 @@
+# noqa: SIZE_OK — legacy deterministic fixture generator with embedded scenario data.
 """Build a hand-authored golden_run.json for the MerlionTel ad-campaign premortem.
 
 Rung 0 fixture: a realistic 60-agent panel + an aggregate computed FROM the reactions,
@@ -341,15 +342,6 @@ for sid, emoji, label, sev, primary, concerns, scene, fix, verdict, finding, q, 
     add(sid, "stakeholder", emoji, label, sev, -2 if sev >= 2 else -1, primary, concerns,
         finding, [scene], fix, q, ev)
     reactions[r_index]["verdict"] = verdict  # stakeholders carry a verdict badge
-
-# ----------------------------------------------------------------------------
-# Two agents abstain (gray tiles, excluded from the denominator)
-# ----------------------------------------------------------------------------
-for aid in ("towkay_3", "lens_ageism"):
-    for r in reactions:
-        if r["agent_id"] == aid:
-            r["status"] = "abstain"
-            r["severity"] = 0
 
 # ----------------------------------------------------------------------------
 # REDUCE  (60 reactions -> dashboard_state)

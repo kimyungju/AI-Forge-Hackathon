@@ -1,3 +1,4 @@
+# noqa: SIZE_OK — deterministic fixture generator with embedded scenario data.
 """Seed golden/golden_run.json with the Google I/O 2026 "always-on AI" scenario.
 
 Swaps the fictional MerlionTel "We're Listening" ad film for the REAL Google I/O 2026
@@ -504,12 +505,6 @@ def compute_fix(reactions, blast):
 def main():
     reactions = persona_records() + lens_records() + stake_records()
     assert len(reactions) == 60, f"expected 60 agents, got {len(reactions)}"
-
-    # a couple of genuine abstains (excluded from the denominator), like the original run
-    for aid in ("mainstream_3", "genz_creator_4"):
-        for r in reactions:
-            if r["agent_id"] == aid:
-                r["status"] = "abstain"
 
     aggregate, grounding_index = reduce_aggregate(reactions, CREATIVE)
     blast = aggregate["blast_score"]
