@@ -1,3 +1,4 @@
+import asyncio
 import json
 from pathlib import Path
 import subprocess
@@ -79,6 +80,88 @@ def test_analyze_rejects_unknown_provider_before_live_call() -> None:
 
     # Then
     assert response.status_code == 422
+
+
+def test_analyze_accepts_optional_sponsor_switches(monkeypatch) -> None:
+    # Given
+    from app import analyze as analyze_module
+
+    async def fake_analyze(request, options):
+        return {
+            "campaign": request.campaign,
+            "video_source": request.video_source,
+            "brightdata": options.brightdata,
+            "daytona": options.daytona,
+            "videodb": options.videodb,
+            "sandbox_limit": options.sandbox_limit,
+        }
+
+    monkeypatch.setattr(analyze_module, "analyze", fake_analyze)
+    client = TestClient(app)
+
+    # When
+    response = client.post(
+        "/api/analyze",
+        json={
+            "campaign": "Launch copy",
+            "brand": "Acme",
+            "brightdata": True,
+            "daytona": True,
+            "videodb": True,
+            "video_source": "https://example.com/ad.mp4",
+            "sandbox_limit": 2,
+        },
+    )
+
+    # Then
+    assert response.status_code == 200
+    assert response.json() == {
+        "campaign": "Launch copy",
+        "video_source": "https://example.com/ad.mp4",
+        "brightdata": True,
+        "daytona": True,
+        "videodb": True,
+        "sandbox_limit": 2,
+    }
+
+
+def test_analyze_requires_video_source_when_videodb_enabled() -> None:
+    # Given
+    client = TestClient(app)
+
+    # When
+    response = client.post(
+        "/api/analyze",
+        json={"campaign": "Launch copy", "brand": "Acme", "videodb": True},
+    )
+
+    # Then
+    assert response.status_code == 400
+    assert response.json()["detail"] == "video_source required when videodb is enabled"
+
+
+def test_analyze_fixture_mode_returns_grounding_receipt_trace() -> None:
+    # Given
+    from app.analyze import AnalyzeInput, AnalyzeOptions, analyze
+
+    golden = json.loads((ROOT / "golden" / "golden_run.json").read_text(encoding="utf-8"))
+
+    # When
+    result = asyncio.run(
+        analyze(
+            AnalyzeInput(
+                campaign="Launch copy for a privacy-sensitive telco feature.",
+                brand="AcmeTel",
+                golden=golden,
+            ),
+            AnalyzeOptions(mode="fixture", provider="kimi", brightdata=True),
+        )
+    )
+
+    # Then
+    assert result["mode"] == "fixture"
+    assert len(result["grounding_receipts"]) == len(golden["reactions"])
+    assert result["sponsor_trace"][1]["sponsor"] == "Bright Data"
 
 
 def test_dashboard_renderer_treats_malicious_fixture_text_as_text() -> None:

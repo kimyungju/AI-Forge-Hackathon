@@ -8,9 +8,30 @@ if it fails.
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass
 
 from app.pipeline import reduce_aggregate
-from app.sponsors import kimi
+from app.sponsors import brightdata, daytona, kimi, trace, videodb
+
+
+@dataclass(frozen=True, slots=True)
+class AnalyzeInput:
+    campaign: str
+    brand: str
+    golden: dict
+    video_source: str = ""
+
+
+@dataclass(frozen=True, slots=True)
+class AnalyzeOptions:
+    provider: str = "kimi"
+    mode: str = "live"
+    brightdata: bool = False
+    daytona: bool = False
+    videodb: bool = False
+    allow_baked_grounding: bool = False
+    sandbox_limit: int = 0
+    sandbox_keep: bool = False
 
 
 def _scenes_from_text(campaign: str):
@@ -24,17 +45,29 @@ def _scenes_from_text(campaign: str):
     ]
 
 
-def _roster(golden):
+def _roster(golden, scenario):
     """Reuse identity (agent_id/kind/label) but drop the baked reaction + grounding."""
     roster = []
     for r in golden["reactions"]:
         roster.append({
             "agent_id": r["agent_id"], "kind": r["kind"], "emoji": r.get("emoji", ""),
             "label": r["label"], "status": "responded", "verdict": r.get("verdict"),
-            "objections": [], "quote": "", "severity": 0, "fix_tier": "copy",
-            "grounding_query": "", "grounding": [],
+            "sentiment": 0, "severity": 0, "objection_category": "other",
+            "objections": [], "quote": "", "trigger_moments": [], "fix_tier": "copy",
+            "would_share": {"yes": False, "where": ""},
+            "grounding_query": _grounding_query(r, scenario), "grounding": [],
+            "question": "",
         })
     return roster
+
+
+def _grounding_query(agent, scenario):
+    words = re.findall(r"[A-Za-z0-9$%]+", scenario["campaign"])[:10]
+    seed = " ".join([scenario["brand"], *words]).strip()
+    original = str(agent.get("grounding_query", "")).lower()
+    if "r/singapore" in original or "reddit" in original:
+        return f"r/singapore {seed}".strip()
+    return f"{seed} {agent['label']} public reaction".strip()
 
 
 def _headline(brand, clusters):
@@ -71,25 +104,85 @@ def _fix(reactions, blast):
     }
 
 
-async def analyze(campaign, brand, golden, provider="kimi", mode="live"):
-    brand = brand or "the brand"
-    campaign = (campaign or "").strip()[:2500]  # cap pasted walls of text (tokens + layout)
+async def analyze(request: AnalyzeInput, options: AnalyzeOptions | None = None):
+    opts = options or AnalyzeOptions()
+    brand = request.brand or "the brand"
+    campaign = (request.campaign or "").strip()[:2500]  # cap pasted walls of text (tokens + layout)
     scenario = {"brand": brand, "category": "Campaign", "campaign": campaign,
-                "date": golden.get("scenario", {}).get("date", "")}
+                "date": request.golden.get("scenario", {}).get("date", "")}
     creative = _scenes_from_text(campaign)
-    roster = _roster(golden)
+    video_receipt = None
+    if opts.videodb:
+        creative, video_receipt = videodb.ingest_creative(
+            source=request.video_source,
+            existing_manifest=creative,
+            scenario=scenario,
+            mode=opts.mode,
+        )
+    roster = _roster(request.golden, scenario)
 
-    reactions = await kimi.run_panel(roster, scenario, creative, mode=mode, provider=provider)
+    sandbox_receipts = []
+    if opts.daytona:
+        roster, sandbox_receipts = daytona.attach_receipts(
+            roster,
+            daytona.SandboxOptions(
+                mode=opts.mode,
+                enabled=True,
+                limit=opts.sandbox_limit,
+                keep=opts.sandbox_keep,
+                run_brightdata=opts.brightdata,
+                allow_baked_grounding=opts.allow_baked_grounding,
+            ),
+        )
+
+    grounding_receipts = []
+    if opts.brightdata:
+        for agent in roster:
+            sandbox_receipt = agent.get("sandbox_receipt") or {}
+            if sandbox_receipt.get("grounding_status") == "success":
+                grounding_receipts.append({
+                    "agent_id": agent["agent_id"],
+                    "status": "success",
+                    "source": "daytona+brightdata",
+                    "snippets": int(sandbox_receipt.get("grounding_count", 0)),
+                    "detail": "live Bright Data grounding parsed inside Daytona sandbox",
+                })
+                continue
+            result = brightdata.ground_with_receipt(
+                agent,
+                brightdata.GroundingOptions(
+                    mode=opts.mode,
+                    scenario=scenario,
+                    allow_baked_fallback=opts.allow_baked_grounding,
+                ),
+            )
+            agent["grounding"] = result.snippets
+            grounding_receipts.append(result.receipt.as_json())
+
+    reactions = await kimi.run_panel(roster, scenario, creative, mode=opts.mode, provider=opts.provider)
     aggregate, grounding_index = reduce_aggregate(reactions, creative)
 
     badges = [
         {"emoji": r.get("emoji", ""), "role": r["label"], "verdict": r.get("verdict", ""), "note": r.get("quote", "")}
         for r in reactions if r["kind"] == "stakeholder"
     ]
-    return {
-        "run_id": "live", "mode": "live", "scenario": scenario, "creative_manifest": creative,
+    result = {
+        "run_id": "live", "mode": opts.mode, "scenario": scenario, "creative_manifest": creative,
         "grounding_index": grounding_index, "reactions": reactions, "aggregate": aggregate,
         "fix": _fix(reactions, aggregate["blast_score"]),
         "stakeholder_badges": badges, "headline": _headline(brand, aggregate["clusters"]),
-        "sponsor_trace": golden.get("sponsor_trace", []),
+        "sponsor_trace": trace.build_sponsor_trace(
+            trace.SponsorTraceInputs(
+                provider=opts.provider,
+                reaction_count=len(reactions),
+                grounding_receipts=grounding_receipts,
+                sandbox_receipts=sandbox_receipts,
+                video_receipt=video_receipt,
+            )
+        ),
     }
+    if grounding_receipts:
+        result["grounding_receipts"] = grounding_receipts
+    if sandbox_receipts:
+        result["sandbox_receipts"] = sandbox_receipts
+    return result

@@ -11,7 +11,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_DIR = os.path.join(ROOT, "app", "static")
@@ -32,6 +32,12 @@ class AnalyzeRequest(BaseModel):
     campaign: str
     brand: str = ""
     provider: Literal["kimi", "openai"] = "kimi"
+    brightdata: bool = False
+    daytona: bool = False
+    videodb: bool = False
+    video_source: str = ""
+    allow_baked_grounding: bool = False
+    sandbox_limit: int = Field(default=0, ge=0)
 
 
 @app.get("/healthz")
@@ -53,11 +59,25 @@ async def api_analyze(payload: AnalyzeRequest):
     if not campaign:
         raise HTTPException(status_code=400, detail="campaign text required")
     brand = payload.brand.strip() or "the brand"
-    from app.analyze import analyze
+    video_source = payload.video_source.strip()
+    if payload.videodb and not video_source:
+        raise HTTPException(status_code=400, detail="video_source required when videodb is enabled")
+    from app.analyze import AnalyzeInput, AnalyzeOptions, analyze
     with open(GOLDEN_PATH, encoding="utf-8") as f:
         golden = json.load(f)
     try:
-        result = await analyze(campaign, brand, golden, provider=payload.provider, mode="live")
+        result = await analyze(
+            AnalyzeInput(campaign=campaign, brand=brand, golden=golden, video_source=video_source),
+            AnalyzeOptions(
+                provider=payload.provider,
+                mode="live",
+                brightdata=payload.brightdata,
+                daytona=payload.daytona,
+                videodb=payload.videodb,
+                allow_baked_grounding=payload.allow_baked_grounding,
+                sandbox_limit=payload.sandbox_limit,
+            ),
+        )
     except RuntimeError as e:
         return JSONResponse({"detail": f"{type(e).__name__}: {e}"}, status_code=502)
     return JSONResponse(result)

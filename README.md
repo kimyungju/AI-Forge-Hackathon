@@ -143,7 +143,8 @@ fill the keys for the path you want — fixture mode needs none of them.
 ```bash
 python bake.py --mode live --mini 6                               # cheap live smoke (6 agents)
 python bake.py --mode live                                        # full 60-agent live bake
-python bake.py --mode live --mini 3 --sandbox daytona --sandbox-mini 3   # + Daytona receipts
+python bake.py --mode live --allow-baked-grounding --mini 6        # explicit fallback when iterating without Bright Data zones
+python bake.py --mode live --mini 3 --sandbox daytona --sandbox-mini 3   # + Daytona receipts and sandbox Bright Data scrape
 python bake.py --mode live --video-source "https://…/ad.mp4" --mini 6    # + VideoDB ingest
 ```
 
@@ -163,8 +164,14 @@ This is a hackathon project. What's live today:
 - ✅ Baked golden run + live/fixture bake script
 - ✅ Kimi (or OpenAI-compatible) 60-agent panel generation
 - ✅ Live typed-campaign path via `POST /api/analyze`
-- ✅ Optional Daytona sandbox receipts and VideoDB creative ingest
-- 🚧 Bright Data grounding hooks wired; per-source parsing still being hardened
+- ✅ Bright Data Google News / Reddit parsing with explicit grounding receipts
+- ✅ Optional Daytona sandbox receipts, including sandbox-side Bright Data scraping
+- ✅ Optional VideoDB creative ingest in bake and `/api/analyze`
+
+`POST /api/analyze` defaults to the Kimi/OpenAI-compatible typed-campaign panel. Add
+`"brightdata": true`, `"daytona": true`, or `"videodb": true` to opt into the sponsor stack for a
+single request. VideoDB requests must include `"video_source"`. Live Bright Data fallback is only used
+when `"allow_baked_grounding": true` is set.
 
 ## Team
 
